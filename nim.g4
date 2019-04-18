@@ -1,13 +1,13 @@
 grammar nim;
 
-start: (stmt NEWLINE)*;
+start: (stmt '\n'*)*;
 
 stmt: varDec | assignStmt | printStmt | constDec | letDec | complexIfStmt | forLoop | whileLoop 
-	| whenStmt | procBlock | block | typeBlock | methodInvoke | forEachStmt;
+	| whenStmt | procBlock | block | typeBlock | methodInvoke | forEachStmt | emptyStmt;
 
-varDec: VARIABLE (('\n' INDENT)? IDENTIFIER (COMMA IDENTIFIER)* COLON (dataType | IDENTIFIER) '\n' (INDENT COMMENT)?)+;
-constDec: CONST (('\n' INDENT)? assignStmt '\n' (INDENT COMMENT)?)+;
-letDec: LET (('\n' INDENT)? assignStmt '\n' (INDENT COMMENT)?)+;
+varDec: VARIABLE (('\n' INDENT)? IDENTIFIER (COMMA IDENTIFIER)* COLON (dataType | IDENTIFIER) ('\n' INDENT COMMENT)?)+;
+constDec: CONST (('\n' INDENT)? assignStmt '\n'? (INDENT COMMENT)?)+;
+letDec: LET (('\n' INDENT)? assignStmt '\n'? (INDENT COMMENT)?)+;
 assignStmt: IDENTIFIER EQUALS_OPERATOR rightHandSideStmt SEMI_COLON? ;
 
 printStmt: ECHO OPEN_PAREN rightHandSideStmt (COMMA rightHandSideStmt)* CLOSE_PAREN
@@ -16,34 +16,34 @@ printStmt: ECHO OPEN_PAREN rightHandSideStmt (COMMA rightHandSideStmt)* CLOSE_PA
 
 complexIfStmt: simpleIfStmt simpleElifStmt*  simpleElseStmt;
 
-simpleIfStmt: (IF NOT? condition COLON '\n' (INDENT stmt '\n')+)
+simpleIfStmt: (IF NOT? condition COLON '\n'? (INDENT stmt '\n')+)
 			| (IF NOT? condition COLON assignStmt)
-			| (IF NOT? IDENTIFIER OPEN_PAREN rightHandSideStmt CLOSE_PAREN COLON '\n' (INDENT stmt '\n')+)
+			| (IF NOT? IDENTIFIER OPEN_PAREN rightHandSideStmt CLOSE_PAREN COLON '\n'? (INDENT stmt '\n')+)
 			| (IF NOT? IDENTIFIER OPEN_PAREN rightHandSideStmt CLOSE_PAREN COLON assignStmt);
 
-simpleElifStmt: ELIF rightHandSideStmt EQUALS_EQUALS rightHandSideStmt COLON '\n' (INDENT stmt '\n')+;
+simpleElifStmt: ELIF rightHandSideStmt EQUALS_EQUALS rightHandSideStmt COLON '\n'? (INDENT stmt '\n')+;
 
 simpleElseStmt: ELSE COLON '\n' (INDENT stmt '\n')+;
 
-forLoop: (FOR IDENTIFIER IN CHAR_LIT OP6 CHAR_LIT COLON COMMENT? '\n' (INDENT stmt '\n')+)
-		| (FOR IDENTIFIER IN DIGIT+ OP6 DIGIT+ COLON COMMENT? '\n' (INDENT stmt '\n')+)
-		| (FOR IDENTIFIER IN DIGIT+ OP6 LESS_THAN IDENTIFIER '.len' COLON COMMENT? '\n' (INDENT stmt '\n')+)
-		| (FOR IDENTIFIER (COMMA IDENTIFIER)* IN AT OPEN_BRACK (literal (COMMA literal)*)* CLOSE_BRACK COLON COMMENT? '\n' (INDENT stmt '\n')+)
-		| (FOR IDENTIFIER IN IDENTIFIER OPEN_PAREN IDENTIFIER CLOSE_PAREN COLON COMMENT? '\n' (INDENT stmt '\n')+);
+forLoop: (FOR IDENTIFIER IN CHAR_LIT OP6 CHAR_LIT COLON COMMENT? '\n'? (INDENT stmt '\n')+)
+		| (FOR IDENTIFIER IN DIGIT+ OP6 DIGIT+ COLON COMMENT? '\n'? (INDENT stmt '\n')+)
+		| (FOR IDENTIFIER IN DIGIT+ OP6 LESS_THAN IDENTIFIER '.len' COLON COMMENT? '\n'? (INDENT stmt '\n')+)
+		| (FOR IDENTIFIER (COMMA IDENTIFIER)* IN AT OPEN_BRACK (literal (COMMA literal)*)* CLOSE_BRACK COLON COMMENT? '\n'? (INDENT stmt '\n')+)
+		| (FOR IDENTIFIER IN IDENTIFIER OPEN_PAREN IDENTIFIER CLOSE_PAREN COLON COMMENT? '\n'? (INDENT stmt '\n')+);
 
-whileLoop: WHILE (condition | 'true') COLON '\n' (INDENT (stmt | BREAK) '\n')+;
+whileLoop: WHILE (condition | 'true') COLON '\n'? (INDENT (stmt | BREAK) '\n')+;
 
 whenStmt : simpleWhenStmt simpleElifStmt* simpleElseStmt;
 
-simpleWhenStmt: WHEN condition COLON '\n' (INDENT (stmt | BREAK) '\n')+;
+simpleWhenStmt: WHEN condition COLON '\n'? (INDENT (stmt | BREAK) '\n')+;
 
 procBlock: PROC IDENTIFIER OPEN_PAREN IDENTIFIER COLON dataType CLOSE_PAREN COLON dataType EQUALS_OPERATOR 
 			(('\n' (INDENT stmt '\n')+) | assignStmt | printStmt);
 
-block: BLOCK IDENTIFIER COLON '\n' (INDENT stmt '\n')+;
+block: BLOCK IDENTIFIER COLON '\n'? (INDENT stmt '\n')+;
 
 typeBlock: TYPE '\n' (INDENT IDENTIFIER EQUALS_OPERATOR 'array' OPEN_BRACK DIGIT+ (OP6 DIGIT+)? COMMA dataType CLOSE_BRACK '\n')+;
-
+emptyStmt: '\n';
 methodInvoke: IDENTIFIER OPEN_PAREN IDENTIFIER (COMMA IDENTIFIER)* CLOSE_PAREN;
 
 forEachStmt: 'forEach' OPEN_PAREN IDENTIFIER CLOSE_PAREN;

@@ -170,6 +170,15 @@ class nimListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by nimParser#emptyStmt.
+    def enterEmptyStmt(self, ctx:nimParser.EmptyStmtContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#emptyStmt.
+    def exitEmptyStmt(self, ctx:nimParser.EmptyStmtContext):
+        pass
+
+
     # Enter a parse tree produced by nimParser#methodInvoke.
     def enterMethodInvoke(self, ctx:nimParser.MethodInvokeContext):
         pass

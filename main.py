@@ -276,8 +276,8 @@ def main():
     token_stream = CommonTokenStream(lexer)
     parser = nimParser(token_stream)
 
- #   tree = parser.start()
- #   print(Trees.toStringTree(tree,None, parser))
+    tree = parser.start()
+    print(Trees.toStringTree(tree,None, parser))
 
     token = lexer.nextToken()
     res = ""
