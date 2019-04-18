@@ -3,20 +3,25 @@ grammar nim;
 start: (stmt SPACE* '\n'*)*;
 
 stmt: varDec | assignStmt | printStmt | constDec | letDec | complexIfStmt | forLoop | whileLoop 
-	| whenStmt | procBlock | block | typeBlock | methodInvoke | forEachStmt | emptyStmt | commentStmt | caseStmt;
+	| whenStmt | procBlock | block | typeBlock | methodInvoke | instanceMethodInvoke | forEachStmt | emptyStmt | caseStmt;
 
-varDec: VARIABLE (('\n' INDENT)? IDENTIFIER (COMMA IDENTIFIER)* COLON (dataType | IDENTIFIER) ('\n' INDENT COMMENT)?)+;
+// varDec: VARIABLE (('\n' INDENT)? IDENTIFIER (COMMA IDENTIFIER)* COLON (dataType | IDENTIFIER) (('\n'* INDENT)? '#' ~('\r' | '\n' | '#')*)?)+;
+varDec: VARIABLE
+	( (('\n' INDENT)? IDENTIFIER (COMMA IDENTIFIER)* COLON (dataType | IDENTIFIER) '\n'*)
+	| (('\n' INDENT)? '#' ~('\r' | '\n' | '#')* '\n'*)
+	| assignStmt
+	)+;
 constDec: CONST (('\n' INDENT)? assignStmt '\n'? (INDENT COMMENT)?)+;
 letDec: LET (('\n' INDENT)? assignStmt '\n'? (INDENT COMMENT)?)+;
 assignStmt: IDENTIFIER EQUALS_OPERATOR rightHandSideStmt SEMI_COLON? ;
 
-printStmt: ECHO OPEN_PAREN rightHandSideStmt (COMMA rightHandSideStmt)* CLOSE_PAREN
-		| ECHO rightHandSideStmt (COMMA rightHandSideStmt)*;
+printStmt: (ECHO OPEN_PAREN rightHandSideStmt (COMMA rightHandSideStmt)* CLOSE_PAREN)
+		| (ECHO rightHandSideStmt (COMMA rightHandSideStmt)*);
 // emptyStmt: '\n';
 
 
 
-complexIfStmt: simpleIfStmt simpleElifStmt*  simpleElseStmt;
+complexIfStmt: simpleIfStmt simpleElifStmt*  simpleElseStmt?;
 
 simpleIfStmt: (IF NOT? condition COLON '\n'? (INDENT stmt '\n')+)
 			| (IF NOT? condition COLON assignStmt)
@@ -29,7 +34,7 @@ simpleElseStmt: ELSE COLON SPACE* '\n' (INDENT stmt '\n')+;
 
 forLoop: (FOR IDENTIFIER IN CHAR_LIT OP6 CHAR_LIT COLON COMMENT? '\n'? (INDENT stmt '\n')+)
 		| (FOR IDENTIFIER IN DIGIT+ OP6 DIGIT+ COLON COMMENT? '\n'? (INDENT stmt '\n')+)
-		| (FOR IDENTIFIER IN DIGIT+ OP6 LESS_THAN IDENTIFIER '.len' COLON COMMENT? '\n'? (INDENT stmt '\n')+)
+		| (FOR IDENTIFIER IN DIGIT+ OP6 LESS_THAN NEW_IDENTIFIER COLON COMMENT? '\n'? (INDENT stmt '\n')+)
 		| (FOR IDENTIFIER (COMMA IDENTIFIER)* IN AT OPEN_BRACK (literal (COMMA literal)*)* CLOSE_BRACK COLON COMMENT? '\n'? (INDENT stmt '\n')+)
 		| (FOR IDENTIFIER IN IDENTIFIER OPEN_PAREN IDENTIFIER CLOSE_PAREN COLON COMMENT? '\n'? (INDENT stmt '\n')+);
 
@@ -47,7 +52,7 @@ block: BLOCK IDENTIFIER COLON '\n'? (INDENT stmt '\n')+;
 typeBlock: TYPE '\n' (INDENT IDENTIFIER EQUALS_OPERATOR 'array' OPEN_BRACK DIGIT+ (OP6 DIGIT+)? COMMA dataType CLOSE_BRACK '\n')+;
 emptyStmt: '\n';
 methodInvoke: IDENTIFIER OPEN_PAREN IDENTIFIER (COMMA IDENTIFIER)* CLOSE_PAREN;
-
+instanceMethodInvoke: NEW_IDENTIFIER OPEN_PAREN rightHandSideStmt (COMMA rightHandSideStmt)* CLOSE_PAREN;
 forEachStmt: 'forEach' OPEN_PAREN IDENTIFIER CLOSE_PAREN;
 //instance method invoke stmt?
 
@@ -60,12 +65,11 @@ dataType: 'string' | 'int' | 'bool';
 
 
 caseStmt : simpleCaseStmt simpleOfStmt* simpleElifOfStmt* simpleElseStmt;
-simpleOfStmt: OF (IDENTIFIER | STR_LIT) (COMMA SPACE* IDENTIFIER | STR_LIT SPACE*)* COLON SPACE* '\n'? (INDENT? stmt '\n')+;
+simpleOfStmt: OF (IDENTIFIER | STR_LIT) (COMMA (IDENTIFIER | STR_LIT))* COLON '\n'? (INDENT? stmt '\n')+;
 simpleElifOfStmt: ELIF rightHandSideStmt COLON COMMENT? '\n'? (INDENT? stmt '\n')+;
 simpleCaseStmt: CASE IDENTIFIER COMMENT? '\n'?;
 
 commentStmt: INDENT? COMMENT;
-
 DIGIT: [0-9];
 INDENT: (SPACE SPACE SPACE SPACE)+;
 NOT_INDENT:
@@ -287,3 +291,5 @@ EXP: ('e' | 'E') [+-] DIGIT+ ( [_] DIGIT)*;
 HEXDIGIT: DIGIT | [A-Fa-f];
 OCTDIGIT: [0-7];
 BINDIGIT: [0-1];
+NEW_IDENTIFIER: (IDENTIFIER | '.')+;
+ARRAY_LEN : (IDENTIFIER | '.' | 'len')+;

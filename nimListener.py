@@ -1,4 +1,4 @@
-# Generated from nim.g4 by ANTLR 4.5.3
+# Generated from nim.g4 by ANTLR 4.7.2
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .nimParser import nimParser
@@ -185,6 +185,15 @@ class nimListener(ParseTreeListener):
 
     # Exit a parse tree produced by nimParser#methodInvoke.
     def exitMethodInvoke(self, ctx:nimParser.MethodInvokeContext):
+        pass
+
+
+    # Enter a parse tree produced by nimParser#instanceMethodInvoke.
+    def enterInstanceMethodInvoke(self, ctx:nimParser.InstanceMethodInvokeContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#instanceMethodInvoke.
+    def exitInstanceMethodInvoke(self, ctx:nimParser.InstanceMethodInvokeContext):
         pass
 
 
