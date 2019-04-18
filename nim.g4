@@ -1,9 +1,9 @@
 grammar nim;
 
-start: (stmt '\n'*)*;
+start: (stmt SPACE* '\n'*)*;
 
 stmt: varDec | assignStmt | printStmt | constDec | letDec | complexIfStmt | forLoop | whileLoop 
-	| whenStmt | procBlock | block | typeBlock | methodInvoke | forEachStmt | emptyStmt;
+	| whenStmt | procBlock | block | typeBlock | methodInvoke | forEachStmt | emptyStmt | commentStmt | caseStmt;
 
 varDec: VARIABLE (('\n' INDENT)? IDENTIFIER (COMMA IDENTIFIER)* COLON (dataType | IDENTIFIER) ('\n' INDENT COMMENT)?)+;
 constDec: CONST (('\n' INDENT)? assignStmt '\n'? (INDENT COMMENT)?)+;
@@ -14,6 +14,8 @@ printStmt: ECHO OPEN_PAREN rightHandSideStmt (COMMA rightHandSideStmt)* CLOSE_PA
 		| ECHO rightHandSideStmt (COMMA rightHandSideStmt)*;
 // emptyStmt: '\n';
 
+
+
 complexIfStmt: simpleIfStmt simpleElifStmt*  simpleElseStmt;
 
 simpleIfStmt: (IF NOT? condition COLON '\n'? (INDENT stmt '\n')+)
@@ -23,7 +25,7 @@ simpleIfStmt: (IF NOT? condition COLON '\n'? (INDENT stmt '\n')+)
 
 simpleElifStmt: ELIF rightHandSideStmt EQUALS_EQUALS rightHandSideStmt COLON '\n'? (INDENT stmt '\n')+;
 
-simpleElseStmt: ELSE COLON '\n' (INDENT stmt '\n')+;
+simpleElseStmt: ELSE COLON SPACE* '\n' (INDENT stmt '\n')+;
 
 forLoop: (FOR IDENTIFIER IN CHAR_LIT OP6 CHAR_LIT COLON COMMENT? '\n'? (INDENT stmt '\n')+)
 		| (FOR IDENTIFIER IN DIGIT+ OP6 DIGIT+ COLON COMMENT? '\n'? (INDENT stmt '\n')+)
@@ -54,6 +56,16 @@ character_literals: CHAR_LIT+;
 string_literals: STR_LIT+;
 rightHandSideStmt: 'true' | 'false' | STR_LIT | (DIGIT+ | IDENTIFIER) (ADD_OPERATOR (DIGIT+ | IDENTIFIER))* | IDENTIFIER OPEN_BRACK (IDENTIFIER | DIGIT+) CLOSE_BRACK | literal | OPEN_BRACK (literal (COMMA literal)*)* CLOSE_BRACK;
 dataType: 'string' | 'int' | 'bool';
+
+
+
+caseStmt : simpleCaseStmt simpleOfStmt* simpleElifOfStmt* simpleElseStmt;
+simpleOfStmt: OF (IDENTIFIER | STR_LIT) (COMMA SPACE* IDENTIFIER | STR_LIT SPACE*)* COLON SPACE* '\n'? (INDENT? stmt '\n')+;
+simpleElifOfStmt: ELIF rightHandSideStmt COLON COMMENT? '\n'? (INDENT? stmt '\n')+;
+simpleCaseStmt: CASE IDENTIFIER COMMENT? '\n'?;
+
+commentStmt: INDENT? COMMENT;
+
 DIGIT: [0-9];
 INDENT: (SPACE SPACE SPACE SPACE)+;
 NOT_INDENT:

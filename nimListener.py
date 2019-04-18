@@ -1,4 +1,4 @@
-# Generated from nim.g4 by ANTLR 4.7.2
+# Generated from nim.g4 by ANTLR 4.5.3
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .nimParser import nimParser
@@ -239,6 +239,51 @@ class nimListener(ParseTreeListener):
 
     # Exit a parse tree produced by nimParser#dataType.
     def exitDataType(self, ctx:nimParser.DataTypeContext):
+        pass
+
+
+    # Enter a parse tree produced by nimParser#caseStmt.
+    def enterCaseStmt(self, ctx:nimParser.CaseStmtContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#caseStmt.
+    def exitCaseStmt(self, ctx:nimParser.CaseStmtContext):
+        pass
+
+
+    # Enter a parse tree produced by nimParser#simpleOfStmt.
+    def enterSimpleOfStmt(self, ctx:nimParser.SimpleOfStmtContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#simpleOfStmt.
+    def exitSimpleOfStmt(self, ctx:nimParser.SimpleOfStmtContext):
+        pass
+
+
+    # Enter a parse tree produced by nimParser#simpleElifOfStmt.
+    def enterSimpleElifOfStmt(self, ctx:nimParser.SimpleElifOfStmtContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#simpleElifOfStmt.
+    def exitSimpleElifOfStmt(self, ctx:nimParser.SimpleElifOfStmtContext):
+        pass
+
+
+    # Enter a parse tree produced by nimParser#simpleCaseStmt.
+    def enterSimpleCaseStmt(self, ctx:nimParser.SimpleCaseStmtContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#simpleCaseStmt.
+    def exitSimpleCaseStmt(self, ctx:nimParser.SimpleCaseStmtContext):
+        pass
+
+
+    # Enter a parse tree produced by nimParser#commentStmt.
+    def enterCommentStmt(self, ctx:nimParser.CommentStmtContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#commentStmt.
+    def exitCommentStmt(self, ctx:nimParser.CommentStmtContext):
         pass
 
 
