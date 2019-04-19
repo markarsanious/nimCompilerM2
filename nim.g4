@@ -4,7 +4,7 @@ start: (stmt ('\n' | '\r')*)*;
 
 stmt: varDec | assignStmt | printStmt | constDec | letDec | complexIfStmt | forLoop | whileLoop 
 	| whenStmt | procBlock | block | typeBlock | methodInvoke | instanceMethodInvoke | emptyStmt 
-	| forEachStmt | caseStmt;
+	| forEachStmt | caseStmt | importStmt;
 
 // varDec: VARIABLE (('\n' INDENT)? IDENTIFIER (COMMA IDENTIFIER)* COLON (dataType | IDENTIFIER) (('\n'* INDENT)? '#' ~('\r' | '\n' | '#')*)?)+;
 varDec: VARIABLE
@@ -57,7 +57,7 @@ whenStmt : simpleWhenStmt simpleElifStmt* simpleElseStmt;
 
 simpleWhenStmt: WHEN condition COLON (('\n' INDENT)? (stmt | BREAK))+;
 
-procBlock: (PROC IDENTIFIER (OPEN_BRACK IDENTIFIER CLOSE_BRACK)? OPEN_PAREN IDENTIFIER COLON dataType CLOSE_PAREN (COLON dataType)? EQUALS_OPERATOR 
+procBlock: (PROC IDENTIFIER (OPEN_BRACK IDENTIFIER CLOSE_BRACK)? OPEN_PAREN (IDENTIFIER ((COLON dataType)| (EQUALS_OPERATOR rightHandSideStmt)) COMMA? )+ CLOSE_PAREN (COLON dataType)? EQUALS_OPERATOR 
 			((('\n' INDENT stmt)+) | (assignStmt '\n'* ('\n' INDENT stmt)*) | (printStmt '\n'* ('\n' INDENT stmt)*)) (RETURN rightHandSideStmt)? '\n'?)
 			| (PROC 'forEach' OPEN_PAREN IDENTIFIER COLON PROC OPEN_PAREN IDENTIFIER COLON dataType CLOSE_PAREN CLOSE_PAREN (COLON dataType)? EQUALS_OPERATOR 
 			((('\n' INDENT stmt)+) | (assignStmt '\n'* ('\n' INDENT stmt)*) | (printStmt '\n'* ('\n' INDENT stmt)*)) (RETURN rightHandSideStmt) '\n'?)
@@ -74,7 +74,10 @@ methodInvoke: (IDENTIFIER OPEN_PAREN (IDENTIFIER | DIGIT+ | literal) ((COMMA | A
 instanceMethodInvoke: NEW_IDENTIFIER OPEN_PAREN rightHandSideStmt (COMMA rightHandSideStmt)* CLOSE_PAREN;
 forEachStmt: 'forEach' OPEN_PAREN IDENTIFIER CLOSE_PAREN;
 
-condition: (rightHandSideStmt (LESS_THAN EQUALS_OPERATOR? | '<=' | '>=' | GREATER_THAN EQUALS_OPERATOR? | EQUALS_EQUALS) rightHandSideStmt) | 'true' | 'false' | IDENTIFIER;
+importStmt: (IMPORT IDENTIFIER (COMMA IDENTIFIER)* (FROM IDENTIFIER)?) | FROM IDENTIFIER IMPORT IDENTIFIER;
+
+condition: simpleCondition ((AND | OR | AND_OPERATOR | OR_OPERATOR) simpleCondition)*;
+simpleCondition: (rightHandSideStmt (LESS_THAN EQUALS_OPERATOR? | '<=' | '>=' | GREATER_THAN EQUALS_OPERATOR? | EQUALS_EQUALS) rightHandSideStmt) | 'true' | 'false' | IDENTIFIER;
 character_literals: CHAR_LIT+;
 string_literals: STR_LIT+;
 rightHandSideStmt: 'true' | 'false' | STR_LIT | (DIGIT+ | IDENTIFIER | literal) ((ADD_OPERATOR | AND_OPERATOR | MINUS_OPERATOR) (DIGIT+ | IDENTIFIER | literal))* 

@@ -233,12 +233,30 @@ class nimListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by nimParser#importStmt.
+    def enterImportStmt(self, ctx:nimParser.ImportStmtContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#importStmt.
+    def exitImportStmt(self, ctx:nimParser.ImportStmtContext):
+        pass
+
+
     # Enter a parse tree produced by nimParser#condition.
     def enterCondition(self, ctx:nimParser.ConditionContext):
         pass
 
     # Exit a parse tree produced by nimParser#condition.
     def exitCondition(self, ctx:nimParser.ConditionContext):
+        pass
+
+
+    # Enter a parse tree produced by nimParser#simpleCondition.
+    def enterSimpleCondition(self, ctx:nimParser.SimpleConditionContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#simpleCondition.
+    def exitSimpleCondition(self, ctx:nimParser.SimpleConditionContext):
         pass
 
 
