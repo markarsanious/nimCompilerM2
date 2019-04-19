@@ -161,7 +161,7 @@ for value in @[3, 4, 5]:
     echo value
 
 for i, value in @[3, 4, 5]:
-    echo "index: ", $i, ", value:", $value    
+    echo "index: ", $i, ", value:", $value
     
     
 proc echoItem(x: string) = echo x
