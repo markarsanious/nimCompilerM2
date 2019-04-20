@@ -272,8 +272,7 @@ def get_token_type(token):
 
 def main():
     output_file = open('nim_result.txt', 'w+')
-    # output_file.write("invalid")
-    # try:
+
     with open(args.file, "r") as file:
         lines = file.read()
     input_stream = InputStream(lines)
@@ -315,7 +314,6 @@ def main():
         output_file.write("invalid")
         return
 
-
     token = lexer.nextToken()
     res = ""
     while not token.type == Token.EOF:
@@ -327,17 +325,11 @@ def main():
 
     
     if token.type == Token.EOF:
-        # if os.path.exists("nim_result.txt"):
-        #     os.remove("nim_result.txt")
-        output_file = open('nim_result.txt', 'w+')
-        output_file.write("valid   ")
+        output_file.write("valid")
     else: 
         output_file.write("invalid")
-    # output_file.write(res)
-    # except: 
-        # output_file = open('nim_result.txt', 'w+')
-        # output_file.write("invalid")
 
+    output_file.close()    
 
 
 if __name__ == '__main__':
