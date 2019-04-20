@@ -5,6 +5,8 @@ from nimLexer import nimLexer
 from nimListener import nimListener
 from nimParser import nimParser
 from antlr4.tree.Trees import Trees
+from antlr4.tree.Tree import ErrorNode, ErrorNodeImpl
+from difflib import SequenceMatcher
 
 
 def get_token_type(token):
@@ -283,9 +285,36 @@ def main():
     print(Trees.toStringTree(tree,None, parser))
     children = Trees.getChildren(tree)
     lastChild = children[len(children)-1]
+    # check if tree has any errors
     if(isinstance(lastChild, ErrorNode)):
         output_file.write("invalid")
         return
+    # check if tree is incomplete
+    lastChildText = lastChild.getText()
+    idx = 2
+    while lastChildText.isspace():
+        lastChild = children[len(children)-idx]
+        lastChildText = lastChild.getText()
+        idx = idx + 1
+    # handling that last child could be multiple lines
+    lastChildTextLines = lastChildText.split("\n")
+    lastChildText = lastChildTextLines[len(lastChildTextLines)-1].strip()
+    # getting last line in input
+    idx = 2
+    lines = lines.split("\n")
+    line = lines[len(lines)-1]
+    while line.isspace():
+        line = lines[len(lines)-idx]
+        idx = idx + 1
+    line = line.strip()
+    print(lastChildText)
+    print(line)
+    print(SequenceMatcher(None, line, lastChildText).ratio())
+    # compare
+    if SequenceMatcher(None, line, lastChildText).ratio() < 0.8:
+        output_file.write("invalid")
+        return
+
 
     token = lexer.nextToken()
     res = ""
