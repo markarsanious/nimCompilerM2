@@ -71,6 +71,15 @@ class nimListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by nimParser#assertStmt.
+    def enterAssertStmt(self, ctx:nimParser.AssertStmtContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#assertStmt.
+    def exitAssertStmt(self, ctx:nimParser.AssertStmtContext):
+        pass
+
+
     # Enter a parse tree produced by nimParser#complexIfStmt.
     def enterComplexIfStmt(self, ctx:nimParser.ComplexIfStmtContext):
         pass
@@ -98,6 +107,15 @@ class nimListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by nimParser#simpleElifStmt.
+    def enterSimpleElifStmt(self, ctx:nimParser.SimpleElifStmtContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#simpleElifStmt.
+    def exitSimpleElifStmt(self, ctx:nimParser.SimpleElifStmtContext):
+        pass
+
+
     # Enter a parse tree produced by nimParser#varSimpleIfStmt.
     def enterVarSimpleIfStmt(self, ctx:nimParser.VarSimpleIfStmtContext):
         pass
@@ -122,15 +140,6 @@ class nimListener(ParseTreeListener):
 
     # Exit a parse tree produced by nimParser#varSimpleElseStmt.
     def exitVarSimpleElseStmt(self, ctx:nimParser.VarSimpleElseStmtContext):
-        pass
-
-
-    # Enter a parse tree produced by nimParser#simpleElifStmt.
-    def enterSimpleElifStmt(self, ctx:nimParser.SimpleElifStmtContext):
-        pass
-
-    # Exit a parse tree produced by nimParser#simpleElifStmt.
-    def exitSimpleElifStmt(self, ctx:nimParser.SimpleElifStmtContext):
         pass
 
 

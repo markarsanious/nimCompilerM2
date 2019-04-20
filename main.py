@@ -268,28 +268,36 @@ def get_token_type(token):
 
 
 def main():
+    output_file = open('nim_result.txt', 'w+')
 
-    with open(args.file, "r") as file:
-        lines = file.read()
-    input_stream = InputStream(lines)
-    lexer = nimLexer(input_stream)
-    token_stream = CommonTokenStream(lexer)
-    parser = nimParser(token_stream)
+    try:
+        with open(args.file, "r") as file:
+            lines = file.read()
+        input_stream = InputStream(lines)
+        lexer = nimLexer(input_stream)
+        token_stream = CommonTokenStream(lexer)
+        parser = nimParser(token_stream)
 
-    tree = parser.start()
-    print(Trees.toStringTree(tree,None, parser))
-
-    token = lexer.nextToken()
-    res = ""
-    while not token.type == Token.EOF:
-        got_token = get_token_type(token)
-        if got_token is not None:
-            res = res + get_token_type(token) + ' ' + token.text + '\n'
+        tree = parser.start()
+        print(Trees.toStringTree(tree,None, parser))
 
         token = lexer.nextToken()
+        res = ""
+        while not token.type == Token.EOF:
+            got_token = get_token_type(token)
+            if got_token is not None:
+                res = res + get_token_type(token) + ' ' + token.text + '\n'
 
-    output_file = open('nim_result.txt', 'w+')
-    output_file.write(res)
+            token = lexer.nextToken()
+    
+        
+        if token.type == Token.EOF:
+            output_file.write("valid")
+        else: 
+            output_file.write("invalid")
+        # output_file.write(res)
+    except: 
+        output_file.write("invalid")
 
 
 if __name__ == '__main__':

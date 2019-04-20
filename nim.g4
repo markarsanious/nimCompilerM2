@@ -4,7 +4,7 @@ start: (stmt ('\n' | '\r')*)*;
 
 stmt: varDec | assignStmt | printStmt | constDec | letDec | complexIfStmt | forLoop | whileLoop 
 	| whenStmt | procBlock | block | typeBlock | methodInvoke | instanceMethodInvoke | emptyStmt 
-	| forEachStmt | caseStmt | importStmt;
+	| forEachStmt | caseStmt | importStmt | assertStmt;
 
 // varDec: VARIABLE (('\n' INDENT)? IDENTIFIER (COMMA IDENTIFIER)* COLON (dataType | IDENTIFIER) (('\n'* INDENT)? '#' ~('\r' | '\n' | '#')*)?)+;
 varDec: VARIABLE
@@ -16,15 +16,17 @@ varDec: VARIABLE
 	)+;
 constDec: CONST (('\n' INDENT)? assignStmt '\n'? (INDENT COMMENT)?)+;
 letDec: LET (('\n' INDENT)? assignStmt '\n'? (INDENT COMMENT)?)+;
-assignStmt: IDENTIFIER EQUALS_OPERATOR AT? rightHandSideStmt SEMI_COLON? '\n'* INDENT?;
+assignStmt: (IDENTIFIER EQUALS_OPERATOR AT? (instanceMethodInvoke | rightHandSideStmt) SEMI_COLON? '\n'* INDENT?)
+			| (IDENTIFIER EQUALS_OPERATOR methodInvoke ADD_OPERATOR literal);
 
 printStmt: (ECHO OPEN_PAREN rightHandSideStmt (COMMA rightHandSideStmt)* CLOSE_PAREN)
-		| (ECHO rightHandSideStmt (COMMA rightHandSideStmt)*);
+		| (ECHO rightHandSideStmt (COMMA rightHandSideStmt)*)
+		| (ECHO methodInvoke);
 // emptyStmt: '\n';
 
+assertStmt : 'assert' literal EQUALS_EQUALS literal;
 
-
-complexIfStmt: simpleIfStmt simpleElifStmt*  simpleElseStmt?  ('\n' INDENT)?;
+complexIfStmt: simpleIfStmt INDENT? simpleElifStmt* simpleElseStmt?  ('\n' INDENT)?;
 varComplexIfStmt: varSimpleIfStmt varSimpleElifStmt* varSimpleElseStmt?;
 
 simpleIfStmt: (IF NOT? condition COLON assignStmt)
@@ -34,24 +36,32 @@ simpleIfStmt: (IF NOT? condition COLON assignStmt)
 			| (IF NOT? IDENTIFIER OPEN_PAREN rightHandSideStmt CLOSE_PAREN COLON ('\n' INDENT stmt '\n'*)+)
 			| (IF NOT? IDENTIFIER OPEN_PAREN rightHandSideStmt CLOSE_PAREN COLON assignStmt);
 
+simpleElifStmt: (ELIF NOT? condition COLON assignStmt)
+			| (ELIF NOT? condition COLON ('\n' INDENT (stmt | BREAK IDENTIFIER | CONTINUE | 'inc' IDENTIFIER | 'dec' IDENTIFIER))+)
+			| (ELIF NOT? condition COLON ('\n' INDENT (stmt | BREAK IDENTIFIER | CONTINUE)+ '\n'+)+)
+			| (ELIF NOT? condition COLON RETURN)
+			| (ELIF NOT? IDENTIFIER OPEN_PAREN rightHandSideStmt CLOSE_PAREN COLON ('\n' INDENT stmt '\n'*)+)
+			| (ELIF NOT? IDENTIFIER OPEN_PAREN rightHandSideStmt CLOSE_PAREN COLON assignStmt);
+
 varSimpleIfStmt: IF NOT? condition COLON (rightHandSideStmt | NEW_IDENTIFIER);
 
 varSimpleElifStmt: ELIF NOT? condition COLON (rightHandSideStmt | NEW_IDENTIFIER);
 
 varSimpleElseStmt: INDENT? ELSE COLON (rightHandSideStmt | NEW_IDENTIFIER);
 
-simpleElifStmt: ELIF rightHandSideStmt EQUALS_EQUALS rightHandSideStmt COLON ('\n' INDENT stmt '\n'*)+;
+// simpleElifStmt: ELIF condition COLON ('\n' INDENT stmt '\n'*)+;
 
-simpleElseStmt: INDENT? ELSE COLON (('\n' INDENT stmt) | printStmt | assignStmt )+ '\n'* INDENT?;
+simpleElseStmt: (INDENT? ELSE COLON (('\n' INDENT (stmt | BREAK))+ | printStmt | assignStmt )+ '\n'* INDENT?);
 
 forLoop: (FOR IDENTIFIER IN CHAR_LIT OP6 CHAR_LIT COLON COMMENT? ('\n' INDENT stmt)+ INDENT*)
 		| (FOR IDENTIFIER IN (FORLOOP_RANGE | methodInvoke) COLON COMMENT? ('\n' INDENT stmt)+ INDENT*)
 		| (FOR IDENTIFIER IN DIGIT+ OP6 LESS_THAN NEW_IDENTIFIER COLON COMMENT? ('\n' INDENT stmt)+ INDENT*)
 		| (FOR IDENTIFIER (COMMA IDENTIFIER)* IN AT OPEN_BRACK ((literal | DIGIT+) (COMMA (literal | DIGIT+))*)* CLOSE_BRACK COLON COMMENT? ('\n' INDENT stmt)+ INDENT*)
 		| (FOR IDENTIFIER IN IDENTIFIER OPEN_PAREN IDENTIFIER CLOSE_PAREN COLON COMMENT? ('\n' INDENT stmt)+ INDENT*)
-		| (FOR IDENTIFIER IN methodInvoke COLON '\n' INDENT methodInvoke '\n'?);
+		| (FOR IDENTIFIER IN methodInvoke COLON '\n' INDENT methodInvoke '\n'?)
+		| (FOR IDENTIFIER IN IDENTIFIER COLON '\n' INDENT methodInvoke '\n'?);
 
-whileLoop: WHILE (condition | 'true') COLON ('\n' INDENT (stmt | BREAK))+;
+whileLoop: WHILE (condition | 'true') COLON ('\n' INDENT (stmt | (BREAK IDENTIFIER?)))+;
 
 whenStmt : simpleWhenStmt simpleElifStmt* simpleElseStmt;
 
@@ -68,20 +78,23 @@ procBlock: (PROC IDENTIFIER (OPEN_BRACK IDENTIFIER CLOSE_BRACK)? OPEN_PAREN (IDE
 block: BLOCK IDENTIFIER COLON ('\n' INDENT stmt)+;
 
 typeBlock: TYPE '\n' (INDENT IDENTIFIER EQUALS_OPERATOR 'array' OPEN_BRACK (FORLOOP_RANGE | DIGIT+) COMMA dataType CLOSE_BRACK '\n')+;
-methodInvoke: (IDENTIFIER OPEN_PAREN (IDENTIFIER | DIGIT+ | literal) ((COMMA | ADD_OPERATOR | MINUS_OPERATOR) (IDENTIFIER| DIGIT+ | literal))* CLOSE_PAREN)
+methodInvoke: (IDENTIFIER OPEN_PAREN (IDENTIFIER | DIGIT+ | literal | rightHandSideStmt) ((COMMA | ADD_OPERATOR | MINUS_OPERATOR | MOD) (IDENTIFIER| DIGIT+ | literal | rightHandSideStmt))* (COMMA IDENTIFIER EQUALS_OPERATOR 'true')? CLOSE_PAREN)
 			| ( OPEN_PAREN (IDENTIFIER | DIGIT+ | literal) ((COMMA | ADD_OPERATOR | MINUS_OPERATOR) (IDENTIFIER| DIGIT+ | literal))* CLOSE_PAREN NEW_IDENTIFIER)
-			| (IDENTIFIER IDENTIFIER (OPEN_BRACK IDENTIFIER CLOSE_BRACK (COMMA IDENTIFIER OPEN_BRACK IDENTIFIER CLOSE_BRACK)*)?);
-instanceMethodInvoke: NEW_IDENTIFIER OPEN_PAREN rightHandSideStmt (COMMA rightHandSideStmt)* CLOSE_PAREN;
+			| (IDENTIFIER IDENTIFIER (OPEN_BRACK IDENTIFIER CLOSE_BRACK (COMMA IDENTIFIER OPEN_BRACK IDENTIFIER CLOSE_BRACK)*)?)
+			| (IDENTIFIER OPEN_PAREN NEW_IDENTIFIER? CLOSE_PAREN);
+instanceMethodInvoke: (NEW_IDENTIFIER OPEN_PAREN rightHandSideStmt ((COMMA | MOD | ADD_OPERATOR)rightHandSideStmt)* CLOSE_PAREN);
 forEachStmt: 'forEach' OPEN_PAREN IDENTIFIER CLOSE_PAREN;
 
-importStmt: (IMPORT IDENTIFIER (COMMA IDENTIFIER)* (FROM IDENTIFIER)?) | FROM IDENTIFIER IMPORT IDENTIFIER;
+importStmt: (IMPORT IDENTIFIER (COMMA IDENTIFIER)* (FROM IDENTIFIER)?) | FROM IDENTIFIER IMPORT IDENTIFIER (COMMA IDENTIFIER)*;
 
 condition: simpleCondition ((AND | OR | AND_OPERATOR | OR_OPERATOR) simpleCondition)*;
 simpleCondition: (rightHandSideStmt (LESS_THAN EQUALS_OPERATOR? | '<=' | '>=' | GREATER_THAN EQUALS_OPERATOR? | EQUALS_EQUALS) rightHandSideStmt) | 'true' | 'false' | IDENTIFIER;
 character_literals: CHAR_LIT+;
 string_literals: STR_LIT+;
-rightHandSideStmt: 'true' | 'false' | STR_LIT | (DIGIT+ | IDENTIFIER | literal) ((ADD_OPERATOR | AND_OPERATOR | MINUS_OPERATOR) (DIGIT+ | IDENTIFIER | literal))* 
-				| IDENTIFIER OPEN_BRACK (IDENTIFIER | (MINUS_OPERATOR? DIGIT+)) ((COMMA | ADD_OPERATOR | MINUS_OPERATOR | MUL_OPERATOR | DIV) ( (MINUS_OPERATOR? literal) | (MINUS_OPERATOR? DIGIT+) | IDENTIFIER))* CLOSE_BRACK | methodInvoke ((ADD_OPERATOR | MINUS_OPERATOR | MUL_OPERATOR) methodInvoke)*| literal | (OPEN_BRACK ((( MINUS_OPERATOR? literal) | DIGIT+) (COMMA (( MINUS_OPERATOR? literal) | DIGIT+))*)* CLOSE_BRACK);
+rightHandSideStmt: 'true' | 'false' | STR_LIT | (DIGIT+ | IDENTIFIER | literal) ((ADD_OPERATOR | AND_OPERATOR | MINUS_OPERATOR | MOD) (DIGIT+ | IDENTIFIER | literal))* 
+				| IDENTIFIER OPEN_BRACK (IDENTIFIER | (MINUS_OPERATOR? DIGIT+)) ((COMMA | ADD_OPERATOR | MINUS_OPERATOR | MUL_OPERATOR | DIV) ( (MINUS_OPERATOR? literal) | (MINUS_OPERATOR? DIGIT+) | IDENTIFIER))* CLOSE_BRACK | methodInvoke ((ADD_OPERATOR | MINUS_OPERATOR | MUL_OPERATOR) (methodInvoke | DIGIT+ | literal))*| literal | 
+				(OPEN_BRACK ((( MINUS_OPERATOR? literal) | DIGIT+) (COMMA (( MINUS_OPERATOR? literal) | DIGIT+))*)* CLOSE_BRACK)
+				| (OPEN_PAREN rightHandSideStmt ((MINUS_OPERATOR | ADD_OPERATOR) (literal | IDENTIFIER))* CLOSE_PAREN);
 dataType: 'string' | 'int' | 'bool';
 
 
@@ -314,6 +327,6 @@ EXP: ('e' | 'E') [+-] DIGIT+ ( [_] DIGIT)*;
 HEXDIGIT: DIGIT | [A-Fa-f];
 OCTDIGIT: [0-7];
 BINDIGIT: [0-1];
-NEW_IDENTIFIER: (IDENTIFIER | '.')+;
+NEW_IDENTIFIER: ( IDENTIFIER | '.' | STR_LIT)+;
 ARRAY_LEN : (IDENTIFIER | '.' | 'len')+;
 FORLOOP_RANGE : (IDENTIFIER | '..' | LESS_THAN | NEW_IDENTIFIER | DIGIT+)+;
