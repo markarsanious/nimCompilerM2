@@ -197,6 +197,24 @@ class nimListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by nimParser#macroBlock.
+    def enterMacroBlock(self, ctx:nimParser.MacroBlockContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#macroBlock.
+    def exitMacroBlock(self, ctx:nimParser.MacroBlockContext):
+        pass
+
+
+    # Enter a parse tree produced by nimParser#templateStmt.
+    def enterTemplateStmt(self, ctx:nimParser.TemplateStmtContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#templateStmt.
+    def exitTemplateStmt(self, ctx:nimParser.TemplateStmtContext):
+        pass
+
+
     # Enter a parse tree produced by nimParser#block.
     def enterBlock(self, ctx:nimParser.BlockContext):
         pass
