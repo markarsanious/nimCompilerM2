@@ -272,7 +272,7 @@ def get_token_type(token):
 
 def main():
     output_file = open('nim_result.txt', 'w+')
-    output_file.write("invalid")
+    # output_file.write("invalid")
     # try:
     with open(args.file, "r") as file:
         lines = file.read()
