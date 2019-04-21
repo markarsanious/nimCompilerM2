@@ -280,39 +280,63 @@ def main():
     token_stream = CommonTokenStream(lexer)
     parser = nimParser(token_stream)
 
-    tree = parser.start()
-    print(Trees.toStringTree(tree,None, parser))
-    children = Trees.getChildren(tree)
-    lastChild = children[len(children)-1]
-    # check if tree has any errors
-    if(isinstance(lastChild, ErrorNode)):
-        output_file.write("invalid")
-        return
-    # check if tree is incomplete
-    lastChildText = lastChild.getText()
-    idx = 2
-    while lastChildText.isspace():
-        lastChild = children[len(children)-idx]
-        lastChildText = lastChild.getText()
-        idx = idx + 1
-    # handling that last child could be multiple lines
-    lastChildTextLines = lastChildText.split("\n")
-    lastChildText = lastChildTextLines[len(lastChildTextLines)-1].strip()
-    # getting last line in input
-    idx = 2
-    lines = lines.split("\n")
-    line = lines[len(lines)-1]
-    while line.isspace():
-        line = lines[len(lines)-idx]
-        idx = idx + 1
-    line = line.strip()
-    print(lastChildText)
-    print(line)
-    print(SequenceMatcher(None, line, lastChildText).ratio())
-    # compare
-    if SequenceMatcher(None, line, lastChildText).ratio() < 0.8:
-        output_file.write("invalid")
-        return
+    # tree = parser.start()
+    # print(Trees.toStringTree(tree,None, parser))
+    # children = Trees.getChildren(tree)
+    # lastChild = children[len(children)-1]
+    # # check if tree has any errors
+    # if(isinstance(lastChild, ErrorNode)):
+    #     output_file.write("invalid")
+    #     return
+    # # check if tree is incomplete
+    # lastChildText = lastChild.getText()
+    # idx = 2
+    # while lastChildText.isspace():
+    #     lastChild = children[len(children)-idx]
+    #     lastChildText = lastChild.getText()
+    #     idx = idx + 1
+    # # handling that last child could be multiple lines
+    # lastChildTextLines = lastChildText.split("\n")
+    # lastChildText = lastChildTextLines[len(lastChildTextLines)-1].strip()
+    # # getting last line in input
+    # idx = 2
+    # lines = lines.split("\n")
+    # line = lines[len(lines)-1]
+    # while line.isspace():
+    #     line = lines[len(lines)-idx]
+    #     idx = idx + 1
+    # line = line.strip()
+    # print(lastChildText)
+    # print(line)
+    # print(SequenceMatcher(None, line, lastChildText).ratio())
+    # # compare
+    # if SequenceMatcher(None, line, lastChildText).ratio() < 0.8:
+    #     output_file.write("invalid")
+    #     return
+
+    output_str = "valid"
+
+    try:
+        tree = parser.start()
+        print(Trees.toStringTree(tree,None, parser))
+    except:
+        print("ERROR")
+        print("invalid")
+        output_str = "invalid"
+    # finally:
+
+    token = lexer.nextToken()
+    print("NEXT TOKEN", token)
+    if token.type!=Token.EOF:
+        print(token)
+        print("NOT END OF FILE")
+        print("invalid")
+        output_str = "invalid"
+    else:
+        print("valid")
+
+
+    output_file.write(output_str)
 
     token = lexer.nextToken()
     res = ""
@@ -324,10 +348,10 @@ def main():
         token = lexer.nextToken()
 
     
-    if token.type == Token.EOF:
-        output_file.write("valid")
-    else: 
-        output_file.write("invalid")
+    # if token.type == Token.EOF:
+    #     output_file.write("valid")
+    # else: 
+    #     output_file.write("invalid")
 
     output_file.close()    
 

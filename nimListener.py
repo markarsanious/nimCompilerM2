@@ -260,6 +260,15 @@ class nimListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by nimParser#nestedMethodInvoke.
+    def enterNestedMethodInvoke(self, ctx:nimParser.NestedMethodInvokeContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#nestedMethodInvoke.
+    def exitNestedMethodInvoke(self, ctx:nimParser.NestedMethodInvokeContext):
+        pass
+
+
     # Enter a parse tree produced by nimParser#importStmt.
     def enterImportStmt(self, ctx:nimParser.ImportStmtContext):
         pass
@@ -311,6 +320,15 @@ class nimListener(ParseTreeListener):
 
     # Exit a parse tree produced by nimParser#rightHandSideStmt.
     def exitRightHandSideStmt(self, ctx:nimParser.RightHandSideStmtContext):
+        pass
+
+
+    # Enter a parse tree produced by nimParser#complexRightHandSide.
+    def enterComplexRightHandSide(self, ctx:nimParser.ComplexRightHandSideContext):
+        pass
+
+    # Exit a parse tree produced by nimParser#complexRightHandSide.
+    def exitComplexRightHandSide(self, ctx:nimParser.ComplexRightHandSideContext):
         pass
 
 
