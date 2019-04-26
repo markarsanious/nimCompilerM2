@@ -271,8 +271,12 @@ def get_token_type(token):
 
 
 def main():
-    output_file = open('nim_result.txt', 'w+')
-
+    inputFileNameArr = args.file.split('/')
+    inputText = inputFileNameArr[len(inputFileNameArr)-1]
+    output_file_name = inputText.replace('input', 'output')
+    output_file = open(output_file_name, 'w+')
+    print(output_file_name)
+    print(args.file.split('/'))
     with open(args.file, "r") as file:
         lines = file.read()
     input_stream = InputStream(lines)
