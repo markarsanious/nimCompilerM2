@@ -1,14 +1,11 @@
-# Generated from nim.g4 by ANTLR 4.7.2
+# Generated from nim.g4 by ANTLR 4.5.3
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
-from typing.io import TextIO
-import sys
-
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\u009e")
+        buf.write("\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\u009e")
         buf.write("\u074c\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
@@ -215,8 +212,8 @@ def serializedATN():
         buf.write("\2**,,\67\67\5\2\"\"**\67\67\4\2\13\13oo\4\2\3\3\26\26")
         buf.write("\5\2\32\32\34\34/\60\6\2\"\"**,,//\5\2\36\36*,\67\67\3")
         buf.write("\2*,\4\2**,,\4\2\22\24__\4\2xx\u0082\u0082\3\2)\64\7\2")
-        buf.write("]]vy\u0085\u0085\u008a\u0094\u0096\u0096\2\u089d\2e\3")
-        buf.write("\2\2\2\4}\3\2\2\2\6\177\3\2\2\2\b\u00e2\3\2\2\2\n\u00f3")
+        buf.write("]]vy\u0085\u0085\u008a\u0094\u0096\u0096\u089d\2e\3\2")
+        buf.write("\2\2\4}\3\2\2\2\6\177\3\2\2\2\b\u00e2\3\2\2\2\n\u00f3")
         buf.write("\3\2\2\2\f\u0132\3\2\2\2\16\u014b\3\2\2\2\20\u014d\3\2")
         buf.write("\2\2\22\u0152\3\2\2\2\24\u0163\3\2\2\2\26\u0220\3\2\2")
         buf.write("\2\30\u0282\3\2\2\2\32\u0284\3\2\2\2\34\u028e\3\2\2\2")
@@ -1330,12 +1327,11 @@ class nimParser ( Parser ):
     ARRAY_LEN=155
     FORLOOP_RANGE=156
 
-    def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
-        super().__init__(input, output)
-        self.checkVersion("4.7.2")
+    def __init__(self, input:TokenStream):
+        super().__init__(input)
+        self.checkVersion("4.5.3")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
-
 
 
 
@@ -1389,7 +1385,6 @@ class nimParser ( Parser ):
                         if not(_la==nimParser.T__0 or _la==nimParser.T__1):
                             self._errHandler.recoverInline(self)
                         else:
-                            self._errHandler.reportMatch(self)
                             self.consume() 
                     self.state = 96
                     self._errHandler.sync(self)
@@ -1406,7 +1401,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class StmtContext(ParserRuleContext):
 
@@ -1518,7 +1512,7 @@ class nimParser ( Parser ):
         self.enterRule(localctx, 2, self.RULE_stmt)
         try:
             self.state = 123
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -1655,7 +1649,6 @@ class nimParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class VarDecContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -1789,7 +1782,7 @@ class nimParser ( Parser ):
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt == 1:
                     self.state = 220
-                    self._errHandler.sync(self)
+                    self._errHandler.sync(self);
                     la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
                     if la_ == 1:
                         self.state = 126
@@ -1802,7 +1795,6 @@ class nimParser ( Parser ):
 
                     elif la_ == 2:
                         self.state = 131
-                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==nimParser.T__0:
                             self.state = 129
@@ -1828,16 +1820,15 @@ class nimParser ( Parser ):
                         self.state = 141
                         self.match(nimParser.COLON)
                         self.state = 144
-                        self._errHandler.sync(self)
                         token = self._input.LA(1)
                         if token in [nimParser.T__15, nimParser.T__16, nimParser.T__17, nimParser.OBJECT]:
                             self.state = 142
                             self.dataType()
-                            pass
+
                         elif token in [nimParser.IDENTIFIER]:
                             self.state = 143
                             self.match(nimParser.IDENTIFIER)
-                            pass
+
                         else:
                             raise NoViableAltException(self)
 
@@ -1856,7 +1847,6 @@ class nimParser ( Parser ):
 
                     elif la_ == 3:
                         self.state = 154
-                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==nimParser.T__0:
                             self.state = 152
@@ -1877,7 +1867,6 @@ class nimParser ( Parser ):
                                 if _la <= 0 or (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << nimParser.T__0) | (1 << nimParser.T__1) | (1 << nimParser.T__2))) != 0):
                                     self._errHandler.recoverInline(self)
                                 else:
-                                    self._errHandler.reportMatch(self)
                                     self.consume() 
                             self.state = 162
                             self._errHandler.sync(self)
@@ -1915,7 +1904,6 @@ class nimParser ( Parser ):
                         self.state = 175
                         self.match(nimParser.OPEN_BRACK)
                         self.state = 177
-                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << nimParser.T__6) | (1 << nimParser.T__13) | (1 << nimParser.DIGIT))) != 0) or ((((_la - 91)) & ~0x3f) == 0 and ((1 << (_la - 91)) & ((1 << (nimParser.NIL - 91)) | (1 << (nimParser.OPEN_PAREN - 91)) | (1 << (nimParser.OPEN_BRACK - 91)) | (1 << (nimParser.TRIPLESTR_LIT - 91)) | (1 << (nimParser.CHAR_LIT - 91)) | (1 << (nimParser.STR_LIT - 91)) | (1 << (nimParser.RSTR_LIT - 91)) | (1 << (nimParser.IDENTIFIER - 91)) | (1 << (nimParser.INT_LIT - 91)) | (1 << (nimParser.INT8_LIT - 91)) | (1 << (nimParser.INT16_LIT - 91)) | (1 << (nimParser.INT32_LIT - 91)) | (1 << (nimParser.INT64_LIT - 91)) | (1 << (nimParser.UINT_LIT - 91)) | (1 << (nimParser.UINT8_LIT - 91)) | (1 << (nimParser.UINT16_LIT - 91)) | (1 << (nimParser.UINT32_LIT - 91)) | (1 << (nimParser.UINT64_LIT - 91)) | (1 << (nimParser.FLOAT_LIT - 91)) | (1 << (nimParser.FLOAT32_LIT - 91)) | (1 << (nimParser.FLOAT64_LIT - 91)) | (1 << (nimParser.NEW_IDENTIFIER - 91)))) != 0):
                             self.state = 176
@@ -1925,7 +1913,7 @@ class nimParser ( Parser ):
                         self.state = 179
                         self.match(nimParser.CLOSE_BRACK)
                         self.state = 182
-                        self._errHandler.sync(self)
+                        self._errHandler.sync(self);
                         la_ = self._interp.adaptivePredict(self._input,11,self._ctx)
                         if la_ == 1:
                             self.state = 180
@@ -1955,11 +1943,9 @@ class nimParser ( Parser ):
                         self.state = 190
                         self.match(nimParser.OPEN_BRACK)
                         self.state = 200
-                        self._errHandler.sync(self)
                         token = self._input.LA(1)
                         if token in [nimParser.DIGIT, nimParser.MINUS_OPERATOR]:
                             self.state = 192
-                            self._errHandler.sync(self)
                             _la = self._input.LA(1)
                             if _la==nimParser.MINUS_OPERATOR:
                                 self.state = 191
@@ -1978,11 +1964,11 @@ class nimParser ( Parser ):
                                 if not (_la==nimParser.DIGIT):
                                     break
 
-                            pass
+
                         elif token in [nimParser.IDENTIFIER]:
                             self.state = 199
                             self.match(nimParser.IDENTIFIER)
-                            pass
+
                         else:
                             raise NoViableAltException(self)
 
@@ -1993,11 +1979,9 @@ class nimParser ( Parser ):
                             self.state = 202
                             self.match(nimParser.COMMA)
                             self.state = 212
-                            self._errHandler.sync(self)
                             token = self._input.LA(1)
                             if token in [nimParser.DIGIT, nimParser.MINUS_OPERATOR]:
                                 self.state = 204
-                                self._errHandler.sync(self)
                                 _la = self._input.LA(1)
                                 if _la==nimParser.MINUS_OPERATOR:
                                     self.state = 203
@@ -2016,11 +2000,11 @@ class nimParser ( Parser ):
                                     if not (_la==nimParser.DIGIT):
                                         break
 
-                                pass
+
                             elif token in [nimParser.IDENTIFIER]:
                                 self.state = 211
                                 self.match(nimParser.IDENTIFIER)
-                                pass
+
                             else:
                                 raise NoViableAltException(self)
 
@@ -2047,7 +2031,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class ConstDecContext(ParserRuleContext):
 
@@ -2106,7 +2089,6 @@ class nimParser ( Parser ):
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt == 1:
                     self.state = 227
-                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==nimParser.T__0:
                         self.state = 225
@@ -2118,7 +2100,7 @@ class nimParser ( Parser ):
                     self.state = 229
                     self.assignStmt()
                     self.state = 231
-                    self._errHandler.sync(self)
+                    self._errHandler.sync(self);
                     la_ = self._interp.adaptivePredict(self._input,22,self._ctx)
                     if la_ == 1:
                         self.state = 230
@@ -2126,7 +2108,7 @@ class nimParser ( Parser ):
 
 
                     self.state = 235
-                    self._errHandler.sync(self)
+                    self._errHandler.sync(self);
                     la_ = self._interp.adaptivePredict(self._input,23,self._ctx)
                     if la_ == 1:
                         self.state = 233
@@ -2149,7 +2131,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class LetDecContext(ParserRuleContext):
 
@@ -2208,7 +2189,6 @@ class nimParser ( Parser ):
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt == 1:
                     self.state = 244
-                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==nimParser.T__0:
                         self.state = 242
@@ -2220,7 +2200,7 @@ class nimParser ( Parser ):
                     self.state = 246
                     self.assignStmt()
                     self.state = 248
-                    self._errHandler.sync(self)
+                    self._errHandler.sync(self);
                     la_ = self._interp.adaptivePredict(self._input,26,self._ctx)
                     if la_ == 1:
                         self.state = 247
@@ -2228,7 +2208,7 @@ class nimParser ( Parser ):
 
 
                     self.state = 252
-                    self._errHandler.sync(self)
+                    self._errHandler.sync(self);
                     la_ = self._interp.adaptivePredict(self._input,27,self._ctx)
                     if la_ == 1:
                         self.state = 250
@@ -2251,7 +2231,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class AssignStmtContext(ParserRuleContext):
 
@@ -2322,7 +2301,7 @@ class nimParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 304
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,38,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -2331,7 +2310,6 @@ class nimParser ( Parser ):
                 self.state = 259
                 self.match(nimParser.EQUALS_OPERATOR)
                 self.state = 261
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.AT:
                     self.state = 260
@@ -2339,7 +2317,7 @@ class nimParser ( Parser ):
 
 
                 self.state = 266
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,30,self._ctx)
                 if la_ == 1:
                     self.state = 263
@@ -2358,7 +2336,6 @@ class nimParser ( Parser ):
 
 
                 self.state = 269
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.SEMI_COLON:
                     self.state = 268
@@ -2377,7 +2354,7 @@ class nimParser ( Parser ):
                     _alt = self._interp.adaptivePredict(self._input,32,self._ctx)
 
                 self.state = 278
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,33,self._ctx)
                 if la_ == 1:
                     self.state = 277
@@ -2393,7 +2370,7 @@ class nimParser ( Parser ):
                 self.state = 281
                 self.match(nimParser.EQUALS_OPERATOR)
                 self.state = 284
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,34,self._ctx)
                 if la_ == 1:
                     self.state = 282
@@ -2421,7 +2398,6 @@ class nimParser ( Parser ):
                 self.state = 291
                 self.complexRightHandSide()
                 self.state = 293
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.SEMI_COLON:
                     self.state = 292
@@ -2440,7 +2416,7 @@ class nimParser ( Parser ):
                     _alt = self._interp.adaptivePredict(self._input,36,self._ctx)
 
                 self.state = 302
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,37,self._ctx)
                 if la_ == 1:
                     self.state = 301
@@ -2457,7 +2433,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class PrintStmtContext(ParserRuleContext):
 
@@ -2512,7 +2487,7 @@ class nimParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 329
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,41,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -2575,7 +2550,6 @@ class nimParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class AssertStmtContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2628,7 +2602,6 @@ class nimParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ComplexIfStmtContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -2679,7 +2652,7 @@ class nimParser ( Parser ):
             self.state = 336
             self.simpleIfStmt()
             self.state = 338
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,42,self._ctx)
             if la_ == 1:
                 self.state = 337
@@ -2698,7 +2671,7 @@ class nimParser ( Parser ):
                 _alt = self._interp.adaptivePredict(self._input,43,self._ctx)
 
             self.state = 347
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,44,self._ctx)
             if la_ == 1:
                 self.state = 346
@@ -2706,7 +2679,7 @@ class nimParser ( Parser ):
 
 
             self.state = 351
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,45,self._ctx)
             if la_ == 1:
                 self.state = 349
@@ -2722,7 +2695,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class VarComplexIfStmtContext(ParserRuleContext):
 
@@ -2779,7 +2751,7 @@ class nimParser ( Parser ):
                 _alt = self._interp.adaptivePredict(self._input,46,self._ctx)
 
             self.state = 361
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,47,self._ctx)
             if la_ == 1:
                 self.state = 360
@@ -2793,7 +2765,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class SimpleIfStmtContext(ParserRuleContext):
 
@@ -2917,14 +2888,13 @@ class nimParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 542
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,75,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 363
                 self.match(nimParser.IF)
                 self.state = 365
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 364
@@ -2944,7 +2914,6 @@ class nimParser ( Parser ):
                 self.state = 371
                 self.match(nimParser.IF)
                 self.state = 373
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 372
@@ -2960,15 +2929,13 @@ class nimParser ( Parser ):
                 self.state = 378
                 self.match(nimParser.EQUALS_OPERATOR)
                 self.state = 386
-                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [nimParser.NEW_IDENTIFIER]:
                     self.state = 379
                     self.match(nimParser.NEW_IDENTIFIER)
-                    pass
+
                 elif token in [nimParser.OPEN_BRACK, nimParser.AT]:
                     self.state = 381
-                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==nimParser.AT:
                         self.state = 380
@@ -2981,7 +2948,7 @@ class nimParser ( Parser ):
                     self.match(nimParser.NEW_IDENTIFIER)
                     self.state = 385
                     self.match(nimParser.CLOSE_BRACK)
-                    pass
+
                 else:
                     raise NoViableAltException(self)
 
@@ -2996,7 +2963,6 @@ class nimParser ( Parser ):
                 self.state = 390
                 self.match(nimParser.IF)
                 self.state = 392
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 391
@@ -3018,7 +2984,6 @@ class nimParser ( Parser ):
                 self.state = 399
                 self.match(nimParser.IF)
                 self.state = 401
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 400
@@ -3039,34 +3004,33 @@ class nimParser ( Parser ):
                         self.state = 406
                         self.match(nimParser.INDENT)
                         self.state = 415
-                        self._errHandler.sync(self)
                         token = self._input.LA(1)
                         if token in [nimParser.T__0, nimParser.T__3, nimParser.T__8, nimParser.VARIABLE, nimParser.ECHO, nimParser.BLOCK, nimParser.CASE, nimParser.CONST, nimParser.FOR, nimParser.FROM, nimParser.IF, nimParser.IMPORT, nimParser.LET, nimParser.MACRO, nimParser.PROC, nimParser.TEMPLATE, nimParser.TYPE, nimParser.WHEN, nimParser.WHILE, nimParser.OPEN_PAREN, nimParser.IDENTIFIER, nimParser.NEW_IDENTIFIER]:
                             self.state = 407
                             self.stmt()
-                            pass
+
                         elif token in [nimParser.BREAK]:
                             self.state = 408
                             self.match(nimParser.BREAK)
                             self.state = 409
                             self.match(nimParser.IDENTIFIER)
-                            pass
+
                         elif token in [nimParser.CONTINUE]:
                             self.state = 410
                             self.match(nimParser.CONTINUE)
-                            pass
+
                         elif token in [nimParser.T__4]:
                             self.state = 411
                             self.match(nimParser.T__4)
                             self.state = 412
                             self.match(nimParser.IDENTIFIER)
-                            pass
+
                         elif token in [nimParser.T__5]:
                             self.state = 413
                             self.match(nimParser.T__5)
                             self.state = 414
                             self.match(nimParser.IDENTIFIER)
-                            pass
+
                         else:
                             raise NoViableAltException(self)
 
@@ -3084,7 +3048,6 @@ class nimParser ( Parser ):
                 self.state = 421
                 self.match(nimParser.IF)
                 self.state = 423
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 422
@@ -3110,22 +3073,21 @@ class nimParser ( Parser ):
                         while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                             if _alt == 1:
                                 self.state = 433
-                                self._errHandler.sync(self)
                                 token = self._input.LA(1)
                                 if token in [nimParser.T__0, nimParser.T__3, nimParser.T__8, nimParser.VARIABLE, nimParser.ECHO, nimParser.BLOCK, nimParser.CASE, nimParser.CONST, nimParser.FOR, nimParser.FROM, nimParser.IF, nimParser.IMPORT, nimParser.LET, nimParser.MACRO, nimParser.PROC, nimParser.TEMPLATE, nimParser.TYPE, nimParser.WHEN, nimParser.WHILE, nimParser.OPEN_PAREN, nimParser.IDENTIFIER, nimParser.NEW_IDENTIFIER]:
                                     self.state = 429
                                     self.stmt()
-                                    pass
+
                                 elif token in [nimParser.BREAK]:
                                     self.state = 430
                                     self.match(nimParser.BREAK)
                                     self.state = 431
                                     self.match(nimParser.IDENTIFIER)
-                                    pass
+
                                 elif token in [nimParser.CONTINUE]:
                                     self.state = 432
                                     self.match(nimParser.CONTINUE)
-                                    pass
+
                                 else:
                                     raise NoViableAltException(self)
 
@@ -3164,7 +3126,6 @@ class nimParser ( Parser ):
                 self.state = 446
                 self.match(nimParser.IF)
                 self.state = 448
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 447
@@ -3198,7 +3159,7 @@ class nimParser ( Parser ):
                         while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                             if _alt == 1:
                                 self.state = 488
-                                self._errHandler.sync(self)
+                                self._errHandler.sync(self);
                                 la_ = self._interp.adaptivePredict(self._input,66,self._ctx)
                                 if la_ == 1:
                                     self.state = 459
@@ -3294,7 +3255,6 @@ class nimParser ( Parser ):
                 self.state = 501
                 self.match(nimParser.IF)
                 self.state = 503
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 502
@@ -3314,7 +3274,6 @@ class nimParser ( Parser ):
                 self.state = 509
                 self.match(nimParser.IF)
                 self.state = 511
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 510
@@ -3367,7 +3326,6 @@ class nimParser ( Parser ):
                 self.state = 531
                 self.match(nimParser.IF)
                 self.state = 533
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 532
@@ -3396,7 +3354,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class SimpleElifStmtContext(ParserRuleContext):
 
@@ -3486,14 +3443,13 @@ class nimParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 640
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,90,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 544
                 self.match(nimParser.ELIF)
                 self.state = 546
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 545
@@ -3513,7 +3469,6 @@ class nimParser ( Parser ):
                 self.state = 552
                 self.match(nimParser.ELIF)
                 self.state = 554
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 553
@@ -3534,34 +3489,33 @@ class nimParser ( Parser ):
                         self.state = 559
                         self.match(nimParser.INDENT)
                         self.state = 568
-                        self._errHandler.sync(self)
                         token = self._input.LA(1)
                         if token in [nimParser.T__0, nimParser.T__3, nimParser.T__8, nimParser.VARIABLE, nimParser.ECHO, nimParser.BLOCK, nimParser.CASE, nimParser.CONST, nimParser.FOR, nimParser.FROM, nimParser.IF, nimParser.IMPORT, nimParser.LET, nimParser.MACRO, nimParser.PROC, nimParser.TEMPLATE, nimParser.TYPE, nimParser.WHEN, nimParser.WHILE, nimParser.OPEN_PAREN, nimParser.IDENTIFIER, nimParser.NEW_IDENTIFIER]:
                             self.state = 560
                             self.stmt()
-                            pass
+
                         elif token in [nimParser.BREAK]:
                             self.state = 561
                             self.match(nimParser.BREAK)
                             self.state = 562
                             self.match(nimParser.IDENTIFIER)
-                            pass
+
                         elif token in [nimParser.CONTINUE]:
                             self.state = 563
                             self.match(nimParser.CONTINUE)
-                            pass
+
                         elif token in [nimParser.T__4]:
                             self.state = 564
                             self.match(nimParser.T__4)
                             self.state = 565
                             self.match(nimParser.IDENTIFIER)
-                            pass
+
                         elif token in [nimParser.T__5]:
                             self.state = 566
                             self.match(nimParser.T__5)
                             self.state = 567
                             self.match(nimParser.IDENTIFIER)
-                            pass
+
                         else:
                             raise NoViableAltException(self)
 
@@ -3579,7 +3533,6 @@ class nimParser ( Parser ):
                 self.state = 574
                 self.match(nimParser.ELIF)
                 self.state = 576
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 575
@@ -3605,22 +3558,21 @@ class nimParser ( Parser ):
                         while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                             if _alt == 1:
                                 self.state = 586
-                                self._errHandler.sync(self)
                                 token = self._input.LA(1)
                                 if token in [nimParser.T__0, nimParser.T__3, nimParser.T__8, nimParser.VARIABLE, nimParser.ECHO, nimParser.BLOCK, nimParser.CASE, nimParser.CONST, nimParser.FOR, nimParser.FROM, nimParser.IF, nimParser.IMPORT, nimParser.LET, nimParser.MACRO, nimParser.PROC, nimParser.TEMPLATE, nimParser.TYPE, nimParser.WHEN, nimParser.WHILE, nimParser.OPEN_PAREN, nimParser.IDENTIFIER, nimParser.NEW_IDENTIFIER]:
                                     self.state = 582
                                     self.stmt()
-                                    pass
+
                                 elif token in [nimParser.BREAK]:
                                     self.state = 583
                                     self.match(nimParser.BREAK)
                                     self.state = 584
                                     self.match(nimParser.IDENTIFIER)
-                                    pass
+
                                 elif token in [nimParser.CONTINUE]:
                                     self.state = 585
                                     self.match(nimParser.CONTINUE)
-                                    pass
+
                                 else:
                                     raise NoViableAltException(self)
 
@@ -3659,7 +3611,6 @@ class nimParser ( Parser ):
                 self.state = 599
                 self.match(nimParser.ELIF)
                 self.state = 601
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 600
@@ -3679,7 +3630,6 @@ class nimParser ( Parser ):
                 self.state = 607
                 self.match(nimParser.ELIF)
                 self.state = 609
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 608
@@ -3732,7 +3682,6 @@ class nimParser ( Parser ):
                 self.state = 629
                 self.match(nimParser.ELIF)
                 self.state = 631
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NOT:
                     self.state = 630
@@ -3761,7 +3710,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class VarSimpleIfStmtContext(ParserRuleContext):
 
@@ -3813,7 +3761,6 @@ class nimParser ( Parser ):
             self.state = 642
             self.match(nimParser.IF)
             self.state = 644
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==nimParser.NOT:
                 self.state = 643
@@ -3825,7 +3772,7 @@ class nimParser ( Parser ):
             self.state = 647
             self.match(nimParser.COLON)
             self.state = 650
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,92,self._ctx)
             if la_ == 1:
                 self.state = 648
@@ -3845,7 +3792,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class VarSimpleElifStmtContext(ParserRuleContext):
 
@@ -3897,7 +3843,6 @@ class nimParser ( Parser ):
             self.state = 652
             self.match(nimParser.ELIF)
             self.state = 654
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==nimParser.NOT:
                 self.state = 653
@@ -3909,7 +3854,7 @@ class nimParser ( Parser ):
             self.state = 657
             self.match(nimParser.COLON)
             self.state = 660
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,94,self._ctx)
             if la_ == 1:
                 self.state = 658
@@ -3929,7 +3874,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class VarSimpleElseStmtContext(ParserRuleContext):
 
@@ -3975,7 +3919,6 @@ class nimParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 663
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==nimParser.INDENT:
                 self.state = 662
@@ -3987,7 +3930,7 @@ class nimParser ( Parser ):
             self.state = 666
             self.match(nimParser.COLON)
             self.state = 669
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,96,self._ctx)
             if la_ == 1:
                 self.state = 667
@@ -4007,7 +3950,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class SimpleElseStmtContext(ParserRuleContext):
 
@@ -4076,7 +4018,6 @@ class nimParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 672
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==nimParser.INDENT:
                 self.state = 671
@@ -4093,7 +4034,6 @@ class nimParser ( Parser ):
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt == 1:
                     self.state = 688
-                    self._errHandler.sync(self)
                     token = self._input.LA(1)
                     if token in [nimParser.T__0]:
                         self.state = 682 
@@ -4106,16 +4046,15 @@ class nimParser ( Parser ):
                                 self.state = 677
                                 self.match(nimParser.INDENT)
                                 self.state = 680
-                                self._errHandler.sync(self)
                                 token = self._input.LA(1)
                                 if token in [nimParser.T__0, nimParser.T__3, nimParser.T__8, nimParser.VARIABLE, nimParser.ECHO, nimParser.BLOCK, nimParser.CASE, nimParser.CONST, nimParser.FOR, nimParser.FROM, nimParser.IF, nimParser.IMPORT, nimParser.LET, nimParser.MACRO, nimParser.PROC, nimParser.TEMPLATE, nimParser.TYPE, nimParser.WHEN, nimParser.WHILE, nimParser.OPEN_PAREN, nimParser.IDENTIFIER, nimParser.NEW_IDENTIFIER]:
                                     self.state = 678
                                     self.stmt()
-                                    pass
+
                                 elif token in [nimParser.BREAK]:
                                     self.state = 679
                                     self.match(nimParser.BREAK)
-                                    pass
+
                                 else:
                                     raise NoViableAltException(self)
 
@@ -4126,15 +4065,15 @@ class nimParser ( Parser ):
                             self._errHandler.sync(self)
                             _alt = self._interp.adaptivePredict(self._input,99,self._ctx)
 
-                        pass
+
                     elif token in [nimParser.ECHO]:
                         self.state = 686
                         self.printStmt()
-                        pass
+
                     elif token in [nimParser.IDENTIFIER]:
                         self.state = 687
                         self.assignStmt()
-                        pass
+
                     else:
                         raise NoViableAltException(self)
 
@@ -4157,7 +4096,7 @@ class nimParser ( Parser ):
                 _alt = self._interp.adaptivePredict(self._input,102,self._ctx)
 
             self.state = 699
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,103,self._ctx)
             if la_ == 1:
                 self.state = 698
@@ -4171,7 +4110,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class ForLoopContext(ParserRuleContext):
 
@@ -4304,7 +4242,7 @@ class nimParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 949
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,136,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -4323,7 +4261,6 @@ class nimParser ( Parser ):
                 self.state = 707
                 self.match(nimParser.COLON)
                 self.state = 709
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.COMMENT:
                     self.state = 708
@@ -4380,7 +4317,7 @@ class nimParser ( Parser ):
                 self.state = 731
                 self.caseStmt()
                 self.state = 733
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,107,self._ctx)
                 if la_ == 1:
                     self.state = 732
@@ -4485,23 +4422,21 @@ class nimParser ( Parser ):
                 self.state = 779
                 self.match(nimParser.IN)
                 self.state = 782
-                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [nimParser.FORLOOP_RANGE]:
                     self.state = 780
                     self.match(nimParser.FORLOOP_RANGE)
-                    pass
+
                 elif token in [nimParser.OPEN_PAREN, nimParser.IDENTIFIER]:
                     self.state = 781
                     self.methodInvoke()
-                    pass
+
                 else:
                     raise NoViableAltException(self)
 
                 self.state = 784
                 self.match(nimParser.COLON)
                 self.state = 786
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.COMMENT:
                     self.state = 785
@@ -4568,7 +4503,6 @@ class nimParser ( Parser ):
                 self.state = 812
                 self.match(nimParser.COLON)
                 self.state = 814
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.COMMENT:
                     self.state = 813
@@ -4635,12 +4569,11 @@ class nimParser ( Parser ):
                 _la = self._input.LA(1)
                 while _la==nimParser.DIGIT or ((((_la - 91)) & ~0x3f) == 0 and ((1 << (_la - 91)) & ((1 << (nimParser.NIL - 91)) | (1 << (nimParser.TRIPLESTR_LIT - 91)) | (1 << (nimParser.CHAR_LIT - 91)) | (1 << (nimParser.STR_LIT - 91)) | (1 << (nimParser.RSTR_LIT - 91)) | (1 << (nimParser.INT_LIT - 91)) | (1 << (nimParser.INT8_LIT - 91)) | (1 << (nimParser.INT16_LIT - 91)) | (1 << (nimParser.INT32_LIT - 91)) | (1 << (nimParser.INT64_LIT - 91)) | (1 << (nimParser.UINT_LIT - 91)) | (1 << (nimParser.UINT8_LIT - 91)) | (1 << (nimParser.UINT16_LIT - 91)) | (1 << (nimParser.UINT32_LIT - 91)) | (1 << (nimParser.UINT64_LIT - 91)) | (1 << (nimParser.FLOAT_LIT - 91)) | (1 << (nimParser.FLOAT32_LIT - 91)) | (1 << (nimParser.FLOAT64_LIT - 91)))) != 0):
                     self.state = 847
-                    self._errHandler.sync(self)
                     token = self._input.LA(1)
                     if token in [nimParser.NIL, nimParser.TRIPLESTR_LIT, nimParser.CHAR_LIT, nimParser.STR_LIT, nimParser.RSTR_LIT, nimParser.INT_LIT, nimParser.INT8_LIT, nimParser.INT16_LIT, nimParser.INT32_LIT, nimParser.INT64_LIT, nimParser.UINT_LIT, nimParser.UINT8_LIT, nimParser.UINT16_LIT, nimParser.UINT32_LIT, nimParser.UINT64_LIT, nimParser.FLOAT_LIT, nimParser.FLOAT32_LIT, nimParser.FLOAT64_LIT]:
                         self.state = 841
                         self.literal()
-                        pass
+
                     elif token in [nimParser.DIGIT]:
                         self.state = 843 
                         self._errHandler.sync(self)
@@ -4656,7 +4589,7 @@ class nimParser ( Parser ):
                             self._errHandler.sync(self)
                             _alt = self._interp.adaptivePredict(self._input,119,self._ctx)
 
-                        pass
+
                     else:
                         raise NoViableAltException(self)
 
@@ -4667,12 +4600,11 @@ class nimParser ( Parser ):
                         self.state = 849
                         self.match(nimParser.COMMA)
                         self.state = 856
-                        self._errHandler.sync(self)
                         token = self._input.LA(1)
                         if token in [nimParser.NIL, nimParser.TRIPLESTR_LIT, nimParser.CHAR_LIT, nimParser.STR_LIT, nimParser.RSTR_LIT, nimParser.INT_LIT, nimParser.INT8_LIT, nimParser.INT16_LIT, nimParser.INT32_LIT, nimParser.INT64_LIT, nimParser.UINT_LIT, nimParser.UINT8_LIT, nimParser.UINT16_LIT, nimParser.UINT32_LIT, nimParser.UINT64_LIT, nimParser.FLOAT_LIT, nimParser.FLOAT32_LIT, nimParser.FLOAT64_LIT]:
                             self.state = 850
                             self.literal()
-                            pass
+
                         elif token in [nimParser.DIGIT]:
                             self.state = 852 
                             self._errHandler.sync(self)
@@ -4688,7 +4620,7 @@ class nimParser ( Parser ):
                                 self._errHandler.sync(self)
                                 _alt = self._interp.adaptivePredict(self._input,121,self._ctx)
 
-                            pass
+
                         else:
                             raise NoViableAltException(self)
 
@@ -4705,7 +4637,6 @@ class nimParser ( Parser ):
                 self.state = 869
                 self.match(nimParser.COLON)
                 self.state = 871
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.COMMENT:
                     self.state = 870
@@ -4762,7 +4693,6 @@ class nimParser ( Parser ):
                 self.state = 893
                 self.match(nimParser.COLON)
                 self.state = 895
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.COMMENT:
                     self.state = 894
@@ -4819,7 +4749,7 @@ class nimParser ( Parser ):
                 self.state = 917
                 self.methodInvoke()
                 self.state = 919
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,131,self._ctx)
                 if la_ == 1:
                     self.state = 918
@@ -4851,7 +4781,6 @@ class nimParser ( Parser ):
                 self.state = 931
                 self.match(nimParser.NEW_IDENTIFIER)
                 self.state = 936
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.OPEN_PAREN:
                     self.state = 932
@@ -4883,7 +4812,7 @@ class nimParser ( Parser ):
                     _alt = self._interp.adaptivePredict(self._input,134,self._ctx)
 
                 self.state = 947
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,135,self._ctx)
                 if la_ == 1:
                     self.state = 946
@@ -4900,7 +4829,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class WhileLoopContext(ParserRuleContext):
 
@@ -4966,7 +4894,7 @@ class nimParser ( Parser ):
             self.state = 951
             self.match(nimParser.WHILE)
             self.state = 954
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,137,self._ctx)
             if la_ == 1:
                 self.state = 952
@@ -4991,24 +4919,23 @@ class nimParser ( Parser ):
                     self.state = 958
                     self.match(nimParser.INDENT)
                     self.state = 964
-                    self._errHandler.sync(self)
                     token = self._input.LA(1)
                     if token in [nimParser.T__0, nimParser.T__3, nimParser.T__8, nimParser.VARIABLE, nimParser.ECHO, nimParser.BLOCK, nimParser.CASE, nimParser.CONST, nimParser.FOR, nimParser.FROM, nimParser.IF, nimParser.IMPORT, nimParser.LET, nimParser.MACRO, nimParser.PROC, nimParser.TEMPLATE, nimParser.TYPE, nimParser.WHEN, nimParser.WHILE, nimParser.OPEN_PAREN, nimParser.IDENTIFIER, nimParser.NEW_IDENTIFIER]:
                         self.state = 959
                         self.stmt()
-                        pass
+
                     elif token in [nimParser.BREAK]:
                         self.state = 960
                         self.match(nimParser.BREAK)
                         self.state = 962
-                        self._errHandler.sync(self)
+                        self._errHandler.sync(self);
                         la_ = self._interp.adaptivePredict(self._input,138,self._ctx)
                         if la_ == 1:
                             self.state = 961
                             self.match(nimParser.IDENTIFIER)
 
 
-                        pass
+
                     else:
                         raise NoViableAltException(self)
 
@@ -5026,7 +4953,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class WhenStmtContext(ParserRuleContext):
 
@@ -5091,7 +5017,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class SimpleWhenStmtContext(ParserRuleContext):
 
@@ -5160,7 +5085,7 @@ class nimParser ( Parser ):
             _la = self._input.LA(1)
             while True:
                 self.state = 984
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,142,self._ctx)
                 if la_ == 1:
                     self.state = 982
@@ -5170,16 +5095,15 @@ class nimParser ( Parser ):
 
 
                 self.state = 988
-                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [nimParser.T__0, nimParser.T__3, nimParser.T__8, nimParser.VARIABLE, nimParser.ECHO, nimParser.BLOCK, nimParser.CASE, nimParser.CONST, nimParser.FOR, nimParser.FROM, nimParser.IF, nimParser.IMPORT, nimParser.LET, nimParser.MACRO, nimParser.PROC, nimParser.TEMPLATE, nimParser.TYPE, nimParser.WHEN, nimParser.WHILE, nimParser.OPEN_PAREN, nimParser.IDENTIFIER, nimParser.NEW_IDENTIFIER]:
                     self.state = 986
                     self.stmt()
-                    pass
+
                 elif token in [nimParser.BREAK]:
                     self.state = 987
                     self.match(nimParser.BREAK)
-                    pass
+
                 else:
                     raise NoViableAltException(self)
 
@@ -5196,7 +5120,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class ProcBlockContext(ParserRuleContext):
 
@@ -5347,7 +5270,7 @@ class nimParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 1225
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,177,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -5432,10 +5355,8 @@ class nimParser ( Parser ):
                 if not(_la==nimParser.T__7 or _la==nimParser.IDENTIFIER):
                     self._errHandler.recoverInline(self)
                 else:
-                    self._errHandler.reportMatch(self)
                     self.consume()
                 self.state = 1036
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.OPEN_BRACK:
                     self.state = 1033
@@ -5455,37 +5376,34 @@ class nimParser ( Parser ):
                     self.state = 1039
                     self.match(nimParser.IDENTIFIER)
                     self.state = 1047
-                    self._errHandler.sync(self)
                     token = self._input.LA(1)
                     if token in [nimParser.COLON]:
                         self.state = 1040
                         self.match(nimParser.COLON)
                         self.state = 1043
-                        self._errHandler.sync(self)
                         token = self._input.LA(1)
                         if token in [nimParser.T__15, nimParser.T__16, nimParser.T__17, nimParser.OBJECT]:
                             self.state = 1041
                             self.dataType()
-                            pass
+
                         elif token in [nimParser.T__6, nimParser.T__13, nimParser.DIGIT, nimParser.NIL, nimParser.OPEN_PAREN, nimParser.OPEN_BRACK, nimParser.TRIPLESTR_LIT, nimParser.CHAR_LIT, nimParser.STR_LIT, nimParser.RSTR_LIT, nimParser.IDENTIFIER, nimParser.INT_LIT, nimParser.INT8_LIT, nimParser.INT16_LIT, nimParser.INT32_LIT, nimParser.INT64_LIT, nimParser.UINT_LIT, nimParser.UINT8_LIT, nimParser.UINT16_LIT, nimParser.UINT32_LIT, nimParser.UINT64_LIT, nimParser.FLOAT_LIT, nimParser.FLOAT32_LIT, nimParser.FLOAT64_LIT, nimParser.NEW_IDENTIFIER]:
                             self.state = 1042
                             self.rightHandSideStmt()
-                            pass
+
                         else:
                             raise NoViableAltException(self)
 
-                        pass
+
                     elif token in [nimParser.EQUALS_OPERATOR]:
                         self.state = 1045
                         self.match(nimParser.EQUALS_OPERATOR)
                         self.state = 1046
                         self.rightHandSideStmt()
-                        pass
+
                     else:
                         raise NoViableAltException(self)
 
                     self.state = 1050
-                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==nimParser.COMMA:
                         self.state = 1049
@@ -5501,22 +5419,20 @@ class nimParser ( Parser ):
                 self.state = 1056
                 self.match(nimParser.CLOSE_PAREN)
                 self.state = 1062
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.COLON:
                     self.state = 1057
                     self.match(nimParser.COLON)
                     self.state = 1060
-                    self._errHandler.sync(self)
                     token = self._input.LA(1)
                     if token in [nimParser.T__15, nimParser.T__16, nimParser.T__17, nimParser.OBJECT]:
                         self.state = 1058
                         self.dataType()
-                        pass
+
                     elif token in [nimParser.T__6, nimParser.T__13, nimParser.DIGIT, nimParser.NIL, nimParser.OPEN_PAREN, nimParser.OPEN_BRACK, nimParser.TRIPLESTR_LIT, nimParser.CHAR_LIT, nimParser.STR_LIT, nimParser.RSTR_LIT, nimParser.IDENTIFIER, nimParser.INT_LIT, nimParser.INT8_LIT, nimParser.INT16_LIT, nimParser.INT32_LIT, nimParser.INT64_LIT, nimParser.UINT_LIT, nimParser.UINT8_LIT, nimParser.UINT16_LIT, nimParser.UINT32_LIT, nimParser.UINT64_LIT, nimParser.FLOAT_LIT, nimParser.FLOAT32_LIT, nimParser.FLOAT64_LIT, nimParser.NEW_IDENTIFIER]:
                         self.state = 1059
                         self.rightHandSideStmt()
-                        pass
+
                     else:
                         raise NoViableAltException(self)
 
@@ -5525,7 +5441,6 @@ class nimParser ( Parser ):
                 self.state = 1064
                 self.match(nimParser.EQUALS_OPERATOR)
                 self.state = 1102
-                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [nimParser.T__0]:
                     self.state = 1068 
@@ -5546,7 +5461,7 @@ class nimParser ( Parser ):
                         self._errHandler.sync(self)
                         _alt = self._interp.adaptivePredict(self._input,153,self._ctx)
 
-                    pass
+
                 elif token in [nimParser.IDENTIFIER]:
                     self.state = 1072
                     self.assignStmt()
@@ -5576,7 +5491,7 @@ class nimParser ( Parser ):
                         self._errHandler.sync(self)
                         _alt = self._interp.adaptivePredict(self._input,155,self._ctx)
 
-                    pass
+
                 elif token in [nimParser.ECHO]:
                     self.state = 1087
                     self.printStmt()
@@ -5606,12 +5521,12 @@ class nimParser ( Parser ):
                         self._errHandler.sync(self)
                         _alt = self._interp.adaptivePredict(self._input,157,self._ctx)
 
-                    pass
+
                 else:
                     raise NoViableAltException(self)
 
                 self.state = 1106
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,159,self._ctx)
                 if la_ == 1:
                     self.state = 1104
@@ -5621,7 +5536,7 @@ class nimParser ( Parser ):
 
 
                 self.state = 1109
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,160,self._ctx)
                 if la_ == 1:
                     self.state = 1108
@@ -5657,7 +5572,6 @@ class nimParser ( Parser ):
                 self.state = 1122
                 self.match(nimParser.CLOSE_PAREN)
                 self.state = 1125
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.COLON:
                     self.state = 1123
@@ -5693,7 +5607,6 @@ class nimParser ( Parser ):
                 self.state = 1139
                 self.match(nimParser.IDENTIFIER)
                 self.state = 1143
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.OPEN_BRACK:
                     self.state = 1140
@@ -5731,11 +5644,9 @@ class nimParser ( Parser ):
                     self.state = 1155
                     self.match(nimParser.EQUALS_OPERATOR)
                     self.state = 1166
-                    self._errHandler.sync(self)
                     token = self._input.LA(1)
                     if token in [nimParser.DIGIT, nimParser.MINUS_OPERATOR]:
                         self.state = 1157
-                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==nimParser.MINUS_OPERATOR:
                             self.state = 1156
@@ -5754,15 +5665,15 @@ class nimParser ( Parser ):
                             if not (_la==nimParser.DIGIT):
                                 break
 
-                        pass
+
                     elif token in [nimParser.IDENTIFIER]:
                         self.state = 1164
                         self.match(nimParser.IDENTIFIER)
-                        pass
+
                     elif token in [nimParser.NIL, nimParser.TRIPLESTR_LIT, nimParser.CHAR_LIT, nimParser.STR_LIT, nimParser.RSTR_LIT, nimParser.INT_LIT, nimParser.INT8_LIT, nimParser.INT16_LIT, nimParser.INT32_LIT, nimParser.INT64_LIT, nimParser.UINT_LIT, nimParser.UINT8_LIT, nimParser.UINT16_LIT, nimParser.UINT32_LIT, nimParser.UINT64_LIT, nimParser.FLOAT_LIT, nimParser.FLOAT32_LIT, nimParser.FLOAT64_LIT]:
                         self.state = 1165
                         self.literal()
-                        pass
+
                     else:
                         raise NoViableAltException(self)
 
@@ -5773,7 +5684,6 @@ class nimParser ( Parser ):
                 self.state = 1173
                 self.match(nimParser.CLOSE_PAREN)
                 self.state = 1176
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.COLON:
                     self.state = 1174
@@ -5785,7 +5695,6 @@ class nimParser ( Parser ):
                 self.state = 1178
                 self.match(nimParser.EQUALS_OPERATOR)
                 self.state = 1216
-                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [nimParser.T__0]:
                     self.state = 1182 
@@ -5806,7 +5715,7 @@ class nimParser ( Parser ):
                         self._errHandler.sync(self)
                         _alt = self._interp.adaptivePredict(self._input,169,self._ctx)
 
-                    pass
+
                 elif token in [nimParser.IDENTIFIER]:
                     self.state = 1186
                     self.assignStmt()
@@ -5836,7 +5745,7 @@ class nimParser ( Parser ):
                         self._errHandler.sync(self)
                         _alt = self._interp.adaptivePredict(self._input,171,self._ctx)
 
-                    pass
+
                 elif token in [nimParser.ECHO]:
                     self.state = 1201
                     self.printStmt()
@@ -5866,12 +5775,12 @@ class nimParser ( Parser ):
                         self._errHandler.sync(self)
                         _alt = self._interp.adaptivePredict(self._input,173,self._ctx)
 
-                    pass
+
                 else:
                     raise NoViableAltException(self)
 
                 self.state = 1220
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,175,self._ctx)
                 if la_ == 1:
                     self.state = 1218
@@ -5881,7 +5790,7 @@ class nimParser ( Parser ):
 
 
                 self.state = 1223
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,176,self._ctx)
                 if la_ == 1:
                     self.state = 1222
@@ -5898,7 +5807,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class MacroBlockContext(ParserRuleContext):
 
@@ -6021,7 +5929,6 @@ class nimParser ( Parser ):
             self.state = 1228
             self.match(nimParser.IDENTIFIER)
             self.state = 1232
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==nimParser.OPEN_BRACK:
                 self.state = 1229
@@ -6041,7 +5948,6 @@ class nimParser ( Parser ):
                 self.state = 1235
                 self.match(nimParser.IDENTIFIER)
                 self.state = 1246
-                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [nimParser.COLON, nimParser.SEMI_COLON]:
                     self.state = 1236
@@ -6049,42 +5955,38 @@ class nimParser ( Parser ):
                     if not(_la==nimParser.COLON or _la==nimParser.SEMI_COLON):
                         self._errHandler.recoverInline(self)
                     else:
-                        self._errHandler.reportMatch(self)
                         self.consume()
                     self.state = 1239
-                    self._errHandler.sync(self)
                     token = self._input.LA(1)
                     if token in [nimParser.T__15, nimParser.T__16, nimParser.T__17, nimParser.OBJECT]:
                         self.state = 1237
                         self.dataType()
-                        pass
+
                     elif token in [nimParser.T__9]:
                         self.state = 1238
                         self.match(nimParser.T__9)
-                        pass
+
                     else:
                         raise NoViableAltException(self)
 
                     self.state = 1242
-                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==nimParser.SEMI_COLON:
                         self.state = 1241
                         self.match(nimParser.SEMI_COLON)
 
 
-                    pass
+
                 elif token in [nimParser.EQUALS_OPERATOR]:
                     self.state = 1244
                     self.match(nimParser.EQUALS_OPERATOR)
                     self.state = 1245
                     self.rightHandSideStmt()
-                    pass
+
                 else:
                     raise NoViableAltException(self)
 
                 self.state = 1249
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.COMMA:
                     self.state = 1248
@@ -6100,7 +6002,6 @@ class nimParser ( Parser ):
             self.state = 1255
             self.match(nimParser.CLOSE_PAREN)
             self.state = 1261
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==nimParser.COLON or _la==nimParser.SEMI_COLON:
                 self.state = 1256
@@ -6108,19 +6009,17 @@ class nimParser ( Parser ):
                 if not(_la==nimParser.COLON or _la==nimParser.SEMI_COLON):
                     self._errHandler.recoverInline(self)
                 else:
-                    self._errHandler.reportMatch(self)
                     self.consume()
                 self.state = 1259
-                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [nimParser.T__15, nimParser.T__16, nimParser.T__17, nimParser.OBJECT]:
                     self.state = 1257
                     self.dataType()
-                    pass
+
                 elif token in [nimParser.T__9]:
                     self.state = 1258
                     self.match(nimParser.T__9)
-                    pass
+
                 else:
                     raise NoViableAltException(self)
 
@@ -6134,7 +6033,6 @@ class nimParser ( Parser ):
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     self.state = 1265
-                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==nimParser.COMMENT:
                         self.state = 1264
@@ -6144,7 +6042,7 @@ class nimParser ( Parser ):
                     self.state = 1267
                     self.match(nimParser.T__0)
                     self.state = 1269
-                    self._errHandler.sync(self)
+                    self._errHandler.sync(self);
                     la_ = self._interp.adaptivePredict(self._input,187,self._ctx)
                     if la_ == 1:
                         self.state = 1268
@@ -6156,7 +6054,7 @@ class nimParser ( Parser ):
                 _alt = self._interp.adaptivePredict(self._input,188,self._ctx)
 
             self.state = 1321
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,198,self._ctx)
             if la_ == 1:
                 self.state = 1283 
@@ -6165,7 +6063,7 @@ class nimParser ( Parser ):
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt == 1:
                         self.state = 1277
-                        self._errHandler.sync(self)
+                        self._errHandler.sync(self);
                         la_ = self._interp.adaptivePredict(self._input,189,self._ctx)
                         if la_ == 1:
                             self.state = 1276
@@ -6173,7 +6071,6 @@ class nimParser ( Parser ):
 
 
                         self.state = 1280
-                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==nimParser.INDENT:
                             self.state = 1279
@@ -6211,7 +6108,7 @@ class nimParser ( Parser ):
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
                         self.state = 1295
-                        self._errHandler.sync(self)
+                        self._errHandler.sync(self);
                         la_ = self._interp.adaptivePredict(self._input,193,self._ctx)
                         if la_ == 1:
                             self.state = 1294
@@ -6219,7 +6116,6 @@ class nimParser ( Parser ):
 
 
                         self.state = 1298
-                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==nimParser.INDENT:
                             self.state = 1297
@@ -6267,7 +6163,7 @@ class nimParser ( Parser ):
 
 
             self.state = 1325
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,199,self._ctx)
             if la_ == 1:
                 self.state = 1323
@@ -6277,7 +6173,7 @@ class nimParser ( Parser ):
 
 
             self.state = 1328
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,200,self._ctx)
             if la_ == 1:
                 self.state = 1327
@@ -6291,7 +6187,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class TemplateStmtContext(ParserRuleContext):
 
@@ -6357,7 +6252,6 @@ class nimParser ( Parser ):
             self.state = 1331
             self.methodInvoke()
             self.state = 1335
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==nimParser.OPEN_BRACE:
                 self.state = 1332
@@ -6378,7 +6272,6 @@ class nimParser ( Parser ):
                     self.state = 1338
                     self.match(nimParser.T__0)
                     self.state = 1340
-                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==nimParser.INDENT:
                         self.state = 1339
@@ -6401,7 +6294,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class BlockContext(ParserRuleContext):
 
@@ -6483,7 +6375,7 @@ class nimParser ( Parser ):
                     self.state = 1351
                     self.match(nimParser.INDENT)
                     self.state = 1365
-                    self._errHandler.sync(self)
+                    self._errHandler.sync(self);
                     la_ = self._interp.adaptivePredict(self._input,205,self._ctx)
                     if la_ == 1:
                         self.state = 1352
@@ -6530,7 +6422,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class TypeBlockContext(ParserRuleContext):
 
@@ -6627,7 +6518,7 @@ class nimParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 1430
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,216,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -6651,12 +6542,11 @@ class nimParser ( Parser ):
                         self.state = 1377
                         self.match(nimParser.OPEN_BRACK)
                         self.state = 1384
-                        self._errHandler.sync(self)
                         token = self._input.LA(1)
                         if token in [nimParser.FORLOOP_RANGE]:
                             self.state = 1378
                             self.match(nimParser.FORLOOP_RANGE)
-                            pass
+
                         elif token in [nimParser.DIGIT]:
                             self.state = 1380 
                             self._errHandler.sync(self)
@@ -6670,7 +6560,7 @@ class nimParser ( Parser ):
                                 if not (_la==nimParser.DIGIT):
                                     break
 
-                            pass
+
                         else:
                             raise NoViableAltException(self)
 
@@ -6707,7 +6597,6 @@ class nimParser ( Parser ):
                         self.state = 1398
                         self.match(nimParser.IDENTIFIER)
                         self.state = 1402
-                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==nimParser.OPEN_BRACK:
                             self.state = 1399
@@ -6721,7 +6610,6 @@ class nimParser ( Parser ):
                         self.state = 1404
                         self.match(nimParser.EQUALS_OPERATOR)
                         self.state = 1406
-                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==nimParser.REF:
                             self.state = 1405
@@ -6729,7 +6617,6 @@ class nimParser ( Parser ):
 
 
                         self.state = 1413
-                        self._errHandler.sync(self)
                         token = self._input.LA(1)
                         if token in [nimParser.IDENTIFIER]:
                             self.state = 1408
@@ -6740,11 +6627,11 @@ class nimParser ( Parser ):
                             self.match(nimParser.IDENTIFIER)
                             self.state = 1411
                             self.match(nimParser.CLOSE_BRACK)
-                            pass
+
                         elif token in [nimParser.T__15, nimParser.T__16, nimParser.T__17, nimParser.OBJECT]:
                             self.state = 1412
                             self.dataType()
-                            pass
+
                         else:
                             raise NoViableAltException(self)
 
@@ -6758,7 +6645,6 @@ class nimParser ( Parser ):
                     _alt = self._interp.adaptivePredict(self._input,213,self._ctx)
 
                 self.state = 1421
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.T__0:
                     self.state = 1420
@@ -6787,7 +6673,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class MethodInvokeContext(ParserRuleContext):
 
@@ -6894,14 +6779,13 @@ class nimParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 1529
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,233,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1432
                 self.match(nimParser.IDENTIFIER)
                 self.state = 1437
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.OPEN_BRACK:
                     self.state = 1433
@@ -6915,7 +6799,7 @@ class nimParser ( Parser ):
                 self.state = 1439
                 self.match(nimParser.OPEN_PAREN)
                 self.state = 1448
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,219,self._ctx)
                 if la_ == 1:
                     self.state = 1440
@@ -6958,10 +6842,9 @@ class nimParser ( Parser ):
                         if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << nimParser.MOD) | (1 << nimParser.ADD_OPERATOR) | (1 << nimParser.MINUS_OPERATOR) | (1 << nimParser.COMMA))) != 0)):
                             self._errHandler.recoverInline(self)
                         else:
-                            self._errHandler.reportMatch(self)
                             self.consume()
                         self.state = 1459
-                        self._errHandler.sync(self)
+                        self._errHandler.sync(self);
                         la_ = self._interp.adaptivePredict(self._input,221,self._ctx)
                         if la_ == 1:
                             self.state = 1451
@@ -6999,7 +6882,6 @@ class nimParser ( Parser ):
                     _alt = self._interp.adaptivePredict(self._input,222,self._ctx)
 
                 self.state = 1470
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.COMMA:
                     self.state = 1466
@@ -7021,12 +6903,11 @@ class nimParser ( Parser ):
                 self.state = 1473
                 self.match(nimParser.OPEN_PAREN)
                 self.state = 1481
-                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [nimParser.IDENTIFIER]:
                     self.state = 1474
                     self.match(nimParser.IDENTIFIER)
-                    pass
+
                 elif token in [nimParser.DIGIT]:
                     self.state = 1476 
                     self._errHandler.sync(self)
@@ -7040,11 +6921,11 @@ class nimParser ( Parser ):
                         if not (_la==nimParser.DIGIT):
                             break
 
-                    pass
+
                 elif token in [nimParser.NIL, nimParser.TRIPLESTR_LIT, nimParser.CHAR_LIT, nimParser.STR_LIT, nimParser.RSTR_LIT, nimParser.INT_LIT, nimParser.INT8_LIT, nimParser.INT16_LIT, nimParser.INT32_LIT, nimParser.INT64_LIT, nimParser.UINT_LIT, nimParser.UINT8_LIT, nimParser.UINT16_LIT, nimParser.UINT32_LIT, nimParser.UINT64_LIT, nimParser.FLOAT_LIT, nimParser.FLOAT32_LIT, nimParser.FLOAT64_LIT]:
                     self.state = 1480
                     self.literal()
-                    pass
+
                 else:
                     raise NoViableAltException(self)
 
@@ -7057,15 +6938,13 @@ class nimParser ( Parser ):
                     if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << nimParser.ADD_OPERATOR) | (1 << nimParser.MINUS_OPERATOR) | (1 << nimParser.COMMA))) != 0)):
                         self._errHandler.recoverInline(self)
                     else:
-                        self._errHandler.reportMatch(self)
                         self.consume()
                     self.state = 1491
-                    self._errHandler.sync(self)
                     token = self._input.LA(1)
                     if token in [nimParser.IDENTIFIER]:
                         self.state = 1484
                         self.match(nimParser.IDENTIFIER)
-                        pass
+
                     elif token in [nimParser.DIGIT]:
                         self.state = 1486 
                         self._errHandler.sync(self)
@@ -7079,11 +6958,11 @@ class nimParser ( Parser ):
                             if not (_la==nimParser.DIGIT):
                                 break
 
-                        pass
+
                     elif token in [nimParser.NIL, nimParser.TRIPLESTR_LIT, nimParser.CHAR_LIT, nimParser.STR_LIT, nimParser.RSTR_LIT, nimParser.INT_LIT, nimParser.INT8_LIT, nimParser.INT16_LIT, nimParser.INT32_LIT, nimParser.INT64_LIT, nimParser.UINT_LIT, nimParser.UINT8_LIT, nimParser.UINT16_LIT, nimParser.UINT32_LIT, nimParser.UINT64_LIT, nimParser.FLOAT_LIT, nimParser.FLOAT32_LIT, nimParser.FLOAT64_LIT]:
                         self.state = 1490
                         self.literal()
-                        pass
+
                     else:
                         raise NoViableAltException(self)
 
@@ -7104,7 +6983,7 @@ class nimParser ( Parser ):
                 self.state = 1501
                 self.match(nimParser.IDENTIFIER)
                 self.state = 1515
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,230,self._ctx)
                 if la_ == 1:
                     self.state = 1502
@@ -7141,7 +7020,6 @@ class nimParser ( Parser ):
                 self.state = 1517
                 self.match(nimParser.IDENTIFIER)
                 self.state = 1522
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.OPEN_BRACK:
                     self.state = 1518
@@ -7155,7 +7033,6 @@ class nimParser ( Parser ):
                 self.state = 1524
                 self.match(nimParser.OPEN_PAREN)
                 self.state = 1526
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.NEW_IDENTIFIER:
                     self.state = 1525
@@ -7174,7 +7051,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class InstanceMethodInvokeContext(ParserRuleContext):
 
@@ -7240,7 +7116,7 @@ class nimParser ( Parser ):
             self.state = 1531
             self.match(nimParser.NEW_IDENTIFIER)
             self.state = 1533
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,234,self._ctx)
             if la_ == 1:
                 self.state = 1532
@@ -7258,7 +7134,6 @@ class nimParser ( Parser ):
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << nimParser.MOD) | (1 << nimParser.ADD_OPERATOR) | (1 << nimParser.COMMA))) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
-                    self._errHandler.reportMatch(self)
                     self.consume()
                 self.state = 1537
                 self.rightHandSideStmt()
@@ -7267,7 +7142,6 @@ class nimParser ( Parser ):
                 _la = self._input.LA(1)
 
             self.state = 1544
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==nimParser.CLOSE_PAREN:
                 self.state = 1543
@@ -7281,7 +7155,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class ForEachStmtContext(ParserRuleContext):
 
@@ -7337,7 +7210,6 @@ class nimParser ( Parser ):
                 if not(_la==nimParser.T__8 or _la==nimParser.OPEN_PAREN):
                     self._errHandler.recoverInline(self)
                 else:
-                    self._errHandler.reportMatch(self)
                     self.consume()
                 self.state = 1549 
                 self._errHandler.sync(self)
@@ -7359,7 +7231,6 @@ class nimParser ( Parser ):
                     if not(_la==nimParser.T__0 or _la==nimParser.INDENT):
                         self._errHandler.recoverInline(self)
                     else:
-                        self._errHandler.reportMatch(self)
                         self.consume() 
                 self.state = 1558
                 self._errHandler.sync(self)
@@ -7372,7 +7243,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class NestedMethodInvokeContext(ParserRuleContext):
 
@@ -7417,7 +7287,7 @@ class nimParser ( Parser ):
         self.enterRule(localctx, 56, self.RULE_nestedMethodInvoke)
         try:
             self.state = 1565
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,239,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -7445,7 +7315,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class ImportStmtContext(ParserRuleContext):
 
@@ -7492,7 +7361,6 @@ class nimParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 1591
-            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [nimParser.IMPORT]:
                 self.enterOuterAlt(localctx, 1)
@@ -7513,7 +7381,7 @@ class nimParser ( Parser ):
                     _la = self._input.LA(1)
 
                 self.state = 1578
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,241,self._ctx)
                 if la_ == 1:
                     self.state = 1576
@@ -7522,7 +7390,7 @@ class nimParser ( Parser ):
                     self.match(nimParser.IDENTIFIER)
 
 
-                pass
+
             elif token in [nimParser.FROM]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1580
@@ -7545,7 +7413,7 @@ class nimParser ( Parser ):
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                pass
+
             else:
                 raise NoViableAltException(self)
 
@@ -7556,7 +7424,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class ConditionContext(ParserRuleContext):
 
@@ -7627,7 +7494,6 @@ class nimParser ( Parser ):
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << nimParser.AND) | (1 << nimParser.OR) | (1 << nimParser.AND_OPERATOR) | (1 << nimParser.OR_OPERATOR))) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
-                    self._errHandler.reportMatch(self)
                     self.consume()
                 self.state = 1595
                 self.simpleCondition()
@@ -7642,7 +7508,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class SimpleConditionContext(ParserRuleContext):
 
@@ -7693,51 +7558,48 @@ class nimParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 1620
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,248,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1601
                 self.rightHandSideStmt()
                 self.state = 1613
-                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [nimParser.LESS_THAN]:
                     self.state = 1602
                     self.match(nimParser.LESS_THAN)
                     self.state = 1604
-                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==nimParser.EQUALS_OPERATOR:
                         self.state = 1603
                         self.match(nimParser.EQUALS_OPERATOR)
 
 
-                    pass
+
                 elif token in [nimParser.T__11]:
                     self.state = 1606
                     self.match(nimParser.T__11)
-                    pass
+
                 elif token in [nimParser.T__12]:
                     self.state = 1607
                     self.match(nimParser.T__12)
-                    pass
+
                 elif token in [nimParser.GREATER_THAN]:
                     self.state = 1608
                     self.match(nimParser.GREATER_THAN)
                     self.state = 1610
-                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==nimParser.EQUALS_OPERATOR:
                         self.state = 1609
                         self.match(nimParser.EQUALS_OPERATOR)
 
 
-                    pass
+
                 elif token in [nimParser.EQUALS_EQUALS]:
                     self.state = 1612
                     self.match(nimParser.EQUALS_EQUALS)
-                    pass
+
                 else:
                     raise NoViableAltException(self)
 
@@ -7771,7 +7633,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class Character_literalsContext(ParserRuleContext):
 
@@ -7826,7 +7687,6 @@ class nimParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class String_literalsContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -7879,7 +7739,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class RightHandSideStmtContext(ParserRuleContext):
 
@@ -7998,7 +7857,7 @@ class nimParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.state = 1766
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,277,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
@@ -8021,7 +7880,6 @@ class nimParser ( Parser ):
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
                 self.state = 1642
-                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [nimParser.DIGIT]:
                     self.state = 1636 
@@ -8038,15 +7896,15 @@ class nimParser ( Parser ):
                         self._errHandler.sync(self)
                         _alt = self._interp.adaptivePredict(self._input,251,self._ctx)
 
-                    pass
+
                 elif token in [nimParser.IDENTIFIER]:
                     self.state = 1640
                     self.match(nimParser.IDENTIFIER)
-                    pass
+
                 elif token in [nimParser.NIL, nimParser.TRIPLESTR_LIT, nimParser.CHAR_LIT, nimParser.STR_LIT, nimParser.RSTR_LIT, nimParser.INT_LIT, nimParser.INT8_LIT, nimParser.INT16_LIT, nimParser.INT32_LIT, nimParser.INT64_LIT, nimParser.UINT_LIT, nimParser.UINT8_LIT, nimParser.UINT16_LIT, nimParser.UINT32_LIT, nimParser.UINT64_LIT, nimParser.FLOAT_LIT, nimParser.FLOAT32_LIT, nimParser.FLOAT64_LIT]:
                     self.state = 1641
                     self.literal()
-                    pass
+
                 else:
                     raise NoViableAltException(self)
 
@@ -8060,10 +7918,8 @@ class nimParser ( Parser ):
                         if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << nimParser.MOD) | (1 << nimParser.ADD_OPERATOR) | (1 << nimParser.MINUS_OPERATOR) | (1 << nimParser.AND_OPERATOR))) != 0)):
                             self._errHandler.recoverInline(self)
                         else:
-                            self._errHandler.reportMatch(self)
                             self.consume()
                         self.state = 1652
-                        self._errHandler.sync(self)
                         token = self._input.LA(1)
                         if token in [nimParser.DIGIT]:
                             self.state = 1646 
@@ -8080,15 +7936,15 @@ class nimParser ( Parser ):
                                 self._errHandler.sync(self)
                                 _alt = self._interp.adaptivePredict(self._input,253,self._ctx)
 
-                            pass
+
                         elif token in [nimParser.IDENTIFIER]:
                             self.state = 1650
                             self.match(nimParser.IDENTIFIER)
-                            pass
+
                         elif token in [nimParser.NIL, nimParser.TRIPLESTR_LIT, nimParser.CHAR_LIT, nimParser.STR_LIT, nimParser.RSTR_LIT, nimParser.INT_LIT, nimParser.INT8_LIT, nimParser.INT16_LIT, nimParser.INT32_LIT, nimParser.INT64_LIT, nimParser.UINT_LIT, nimParser.UINT8_LIT, nimParser.UINT16_LIT, nimParser.UINT32_LIT, nimParser.UINT64_LIT, nimParser.FLOAT_LIT, nimParser.FLOAT32_LIT, nimParser.FLOAT64_LIT]:
                             self.state = 1651
                             self.literal()
-                            pass
+
                         else:
                             raise NoViableAltException(self)
                  
@@ -8105,15 +7961,13 @@ class nimParser ( Parser ):
                 self.state = 1660
                 self.match(nimParser.OPEN_BRACK)
                 self.state = 1670
-                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [nimParser.IDENTIFIER]:
                     self.state = 1661
                     self.match(nimParser.IDENTIFIER)
-                    pass
+
                 elif token in [nimParser.DIGIT, nimParser.MINUS_OPERATOR]:
                     self.state = 1663
-                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==nimParser.MINUS_OPERATOR:
                         self.state = 1662
@@ -8132,7 +7986,7 @@ class nimParser ( Parser ):
                         if not (_la==nimParser.DIGIT):
                             break
 
-                    pass
+
                 else:
                     raise NoViableAltException(self)
 
@@ -8145,14 +7999,12 @@ class nimParser ( Parser ):
                     if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << nimParser.DIV) | (1 << nimParser.ADD_OPERATOR) | (1 << nimParser.MUL_OPERATOR) | (1 << nimParser.MINUS_OPERATOR) | (1 << nimParser.COMMA))) != 0)):
                         self._errHandler.recoverInline(self)
                     else:
-                        self._errHandler.reportMatch(self)
                         self.consume()
                     self.state = 1686
-                    self._errHandler.sync(self)
+                    self._errHandler.sync(self);
                     la_ = self._interp.adaptivePredict(self._input,262,self._ctx)
                     if la_ == 1:
                         self.state = 1674
-                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==nimParser.MINUS_OPERATOR:
                             self.state = 1673
@@ -8165,7 +8017,6 @@ class nimParser ( Parser ):
 
                     elif la_ == 2:
                         self.state = 1678
-                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==nimParser.MINUS_OPERATOR:
                             self.state = 1677
@@ -8214,15 +8065,13 @@ class nimParser ( Parser ):
                         if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << nimParser.ADD_OPERATOR) | (1 << nimParser.MUL_OPERATOR) | (1 << nimParser.MINUS_OPERATOR))) != 0)):
                             self._errHandler.recoverInline(self)
                         else:
-                            self._errHandler.reportMatch(self)
                             self.consume()
                         self.state = 1703
-                        self._errHandler.sync(self)
                         token = self._input.LA(1)
                         if token in [nimParser.OPEN_PAREN, nimParser.IDENTIFIER]:
                             self.state = 1696
                             self.methodInvoke()
-                            pass
+
                         elif token in [nimParser.DIGIT]:
                             self.state = 1698 
                             self._errHandler.sync(self)
@@ -8238,11 +8087,11 @@ class nimParser ( Parser ):
                                 self._errHandler.sync(self)
                                 _alt = self._interp.adaptivePredict(self._input,264,self._ctx)
 
-                            pass
+
                         elif token in [nimParser.NIL, nimParser.TRIPLESTR_LIT, nimParser.CHAR_LIT, nimParser.STR_LIT, nimParser.RSTR_LIT, nimParser.INT_LIT, nimParser.INT8_LIT, nimParser.INT16_LIT, nimParser.INT32_LIT, nimParser.INT64_LIT, nimParser.UINT_LIT, nimParser.UINT8_LIT, nimParser.UINT16_LIT, nimParser.UINT32_LIT, nimParser.UINT64_LIT, nimParser.FLOAT_LIT, nimParser.FLOAT32_LIT, nimParser.FLOAT64_LIT]:
                             self.state = 1702
                             self.literal()
-                            pass
+
                         else:
                             raise NoViableAltException(self)
                  
@@ -8267,11 +8116,9 @@ class nimParser ( Parser ):
                 _la = self._input.LA(1)
                 while _la==nimParser.DIGIT or _la==nimParser.MINUS_OPERATOR or ((((_la - 91)) & ~0x3f) == 0 and ((1 << (_la - 91)) & ((1 << (nimParser.NIL - 91)) | (1 << (nimParser.TRIPLESTR_LIT - 91)) | (1 << (nimParser.CHAR_LIT - 91)) | (1 << (nimParser.STR_LIT - 91)) | (1 << (nimParser.RSTR_LIT - 91)) | (1 << (nimParser.INT_LIT - 91)) | (1 << (nimParser.INT8_LIT - 91)) | (1 << (nimParser.INT16_LIT - 91)) | (1 << (nimParser.INT32_LIT - 91)) | (1 << (nimParser.INT64_LIT - 91)) | (1 << (nimParser.UINT_LIT - 91)) | (1 << (nimParser.UINT8_LIT - 91)) | (1 << (nimParser.UINT16_LIT - 91)) | (1 << (nimParser.UINT32_LIT - 91)) | (1 << (nimParser.UINT64_LIT - 91)) | (1 << (nimParser.FLOAT_LIT - 91)) | (1 << (nimParser.FLOAT32_LIT - 91)) | (1 << (nimParser.FLOAT64_LIT - 91)))) != 0):
                     self.state = 1721
-                    self._errHandler.sync(self)
                     token = self._input.LA(1)
                     if token in [nimParser.MINUS_OPERATOR, nimParser.NIL, nimParser.TRIPLESTR_LIT, nimParser.CHAR_LIT, nimParser.STR_LIT, nimParser.RSTR_LIT, nimParser.INT_LIT, nimParser.INT8_LIT, nimParser.INT16_LIT, nimParser.INT32_LIT, nimParser.INT64_LIT, nimParser.UINT_LIT, nimParser.UINT8_LIT, nimParser.UINT16_LIT, nimParser.UINT32_LIT, nimParser.UINT64_LIT, nimParser.FLOAT_LIT, nimParser.FLOAT32_LIT, nimParser.FLOAT64_LIT]:
                         self.state = 1713
-                        self._errHandler.sync(self)
                         _la = self._input.LA(1)
                         if _la==nimParser.MINUS_OPERATOR:
                             self.state = 1712
@@ -8280,7 +8127,7 @@ class nimParser ( Parser ):
 
                         self.state = 1715
                         self.literal()
-                        pass
+
                     elif token in [nimParser.DIGIT]:
                         self.state = 1717 
                         self._errHandler.sync(self)
@@ -8296,7 +8143,7 @@ class nimParser ( Parser ):
                             self._errHandler.sync(self)
                             _alt = self._interp.adaptivePredict(self._input,268,self._ctx)
 
-                        pass
+
                     else:
                         raise NoViableAltException(self)
 
@@ -8307,11 +8154,9 @@ class nimParser ( Parser ):
                         self.state = 1723
                         self.match(nimParser.COMMA)
                         self.state = 1733
-                        self._errHandler.sync(self)
                         token = self._input.LA(1)
                         if token in [nimParser.MINUS_OPERATOR, nimParser.NIL, nimParser.TRIPLESTR_LIT, nimParser.CHAR_LIT, nimParser.STR_LIT, nimParser.RSTR_LIT, nimParser.INT_LIT, nimParser.INT8_LIT, nimParser.INT16_LIT, nimParser.INT32_LIT, nimParser.INT64_LIT, nimParser.UINT_LIT, nimParser.UINT8_LIT, nimParser.UINT16_LIT, nimParser.UINT32_LIT, nimParser.UINT64_LIT, nimParser.FLOAT_LIT, nimParser.FLOAT32_LIT, nimParser.FLOAT64_LIT]:
                             self.state = 1725
-                            self._errHandler.sync(self)
                             _la = self._input.LA(1)
                             if _la==nimParser.MINUS_OPERATOR:
                                 self.state = 1724
@@ -8320,7 +8165,7 @@ class nimParser ( Parser ):
 
                             self.state = 1727
                             self.literal()
-                            pass
+
                         elif token in [nimParser.DIGIT]:
                             self.state = 1729 
                             self._errHandler.sync(self)
@@ -8336,7 +8181,7 @@ class nimParser ( Parser ):
                                 self._errHandler.sync(self)
                                 _alt = self._interp.adaptivePredict(self._input,271,self._ctx)
 
-                            pass
+
                         else:
                             raise NoViableAltException(self)
 
@@ -8367,19 +8212,17 @@ class nimParser ( Parser ):
                     if not(_la==nimParser.ADD_OPERATOR or _la==nimParser.MINUS_OPERATOR):
                         self._errHandler.recoverInline(self)
                     else:
-                        self._errHandler.reportMatch(self)
                         self.consume()
                     self.state = 1751
-                    self._errHandler.sync(self)
                     token = self._input.LA(1)
                     if token in [nimParser.NIL, nimParser.TRIPLESTR_LIT, nimParser.CHAR_LIT, nimParser.STR_LIT, nimParser.RSTR_LIT, nimParser.INT_LIT, nimParser.INT8_LIT, nimParser.INT16_LIT, nimParser.INT32_LIT, nimParser.INT64_LIT, nimParser.UINT_LIT, nimParser.UINT8_LIT, nimParser.UINT16_LIT, nimParser.UINT32_LIT, nimParser.UINT64_LIT, nimParser.FLOAT_LIT, nimParser.FLOAT32_LIT, nimParser.FLOAT64_LIT]:
                         self.state = 1749
                         self.literal()
-                        pass
+
                     elif token in [nimParser.IDENTIFIER]:
                         self.state = 1750
                         self.match(nimParser.IDENTIFIER)
-                        pass
+
                     else:
                         raise NoViableAltException(self)
 
@@ -8418,7 +8261,6 @@ class nimParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class ComplexRightHandSideContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -8456,15 +8298,12 @@ class nimParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class DataTypeContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def OBJECT(self):
-            return self.getToken(nimParser.OBJECT, 0)
 
         def getRuleIndex(self):
             return nimParser.RULE_dataType
@@ -8492,7 +8331,6 @@ class nimParser ( Parser ):
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << nimParser.T__15) | (1 << nimParser.T__16) | (1 << nimParser.T__17))) != 0) or _la==nimParser.OBJECT):
                 self._errHandler.recoverInline(self)
             else:
-                self._errHandler.reportMatch(self)
                 self.consume()
         except RecognitionException as re:
             localctx.exception = re
@@ -8501,7 +8339,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class CaseStmtContext(ParserRuleContext):
 
@@ -8585,7 +8422,6 @@ class nimParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class SimpleOfStmtContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -8667,7 +8503,6 @@ class nimParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1788
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==nimParser.INDENT:
                 self.state = 1787
@@ -8677,7 +8512,7 @@ class nimParser ( Parser ):
             self.state = 1790
             self.match(nimParser.OF)
             self.state = 1794
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,281,self._ctx)
             if la_ == 1:
                 self.state = 1791
@@ -8691,7 +8526,6 @@ class nimParser ( Parser ):
             if not(_la==nimParser.STR_LIT or _la==nimParser.IDENTIFIER):
                 self._errHandler.recoverInline(self)
             else:
-                self._errHandler.reportMatch(self)
                 self.consume()
             self.state = 1801
             self._errHandler.sync(self)
@@ -8704,7 +8538,6 @@ class nimParser ( Parser ):
                 if not(_la==nimParser.STR_LIT or _la==nimParser.IDENTIFIER):
                     self._errHandler.recoverInline(self)
                 else:
-                    self._errHandler.reportMatch(self)
                     self.consume()
                 self.state = 1803
                 self._errHandler.sync(self)
@@ -8717,7 +8550,7 @@ class nimParser ( Parser ):
             _la = self._input.LA(1)
             while True:
                 self.state = 1807
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,283,self._ctx)
                 if la_ == 1:
                     self.state = 1805
@@ -8727,7 +8560,7 @@ class nimParser ( Parser ):
 
 
                 self.state = 1814
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,285,self._ctx)
                 if la_ == 1:
                     self.state = 1809
@@ -8736,7 +8569,6 @@ class nimParser ( Parser ):
 
                 elif la_ == 2:
                     self.state = 1811
-                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==nimParser.RETURN:
                         self.state = 1810
@@ -8749,7 +8581,7 @@ class nimParser ( Parser ):
 
 
                 self.state = 1817
-                self._errHandler.sync(self)
+                self._errHandler.sync(self);
                 la_ = self._interp.adaptivePredict(self._input,286,self._ctx)
                 if la_ == 1:
                     self.state = 1816
@@ -8769,7 +8601,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class SimpleElifOfStmtContext(ParserRuleContext):
 
@@ -8831,7 +8662,6 @@ class nimParser ( Parser ):
             self.state = 1825
             self.match(nimParser.COLON)
             self.state = 1827
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==nimParser.COMMENT:
                 self.state = 1826
@@ -8845,7 +8675,6 @@ class nimParser ( Parser ):
                 self.state = 1829
                 self.match(nimParser.T__0)
                 self.state = 1831
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.INDENT:
                     self.state = 1830
@@ -8867,7 +8696,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class SimpleCaseStmtContext(ParserRuleContext):
 
@@ -8915,13 +8743,12 @@ class nimParser ( Parser ):
             self.state = 1838
             self.match(nimParser.CASE)
             self.state = 1852
-            self._errHandler.sync(self)
+            self._errHandler.sync(self);
             la_ = self._interp.adaptivePredict(self._input,294,self._ctx)
             if la_ == 1:
                 self.state = 1839
                 self.match(nimParser.IDENTIFIER)
                 self.state = 1841
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.COMMENT:
                     self.state = 1840
@@ -8929,7 +8756,6 @@ class nimParser ( Parser ):
 
 
                 self.state = 1844
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.T__0:
                     self.state = 1843
@@ -8946,7 +8772,6 @@ class nimParser ( Parser ):
                 self.state = 1848
                 self.dataType()
                 self.state = 1850
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==nimParser.T__0:
                     self.state = 1849
@@ -8963,7 +8788,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class EmptyStmtContext(ParserRuleContext):
 
@@ -9002,7 +8826,6 @@ class nimParser ( Parser ):
             self.exitRule()
         return localctx
 
-
     class CommentStmtContext(ParserRuleContext):
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -9037,7 +8860,6 @@ class nimParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1857
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==nimParser.INDENT:
                 self.state = 1856
@@ -9053,7 +8875,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class OperatorContext(ParserRuleContext):
 
@@ -9123,7 +8944,6 @@ class nimParser ( Parser ):
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << nimParser.EQUALS_OPERATOR) | (1 << nimParser.ADD_OPERATOR) | (1 << nimParser.MUL_OPERATOR) | (1 << nimParser.MINUS_OPERATOR) | (1 << nimParser.DIV_OPERATOR) | (1 << nimParser.BITWISE_NOT_OPERATOR) | (1 << nimParser.AND_OPERATOR) | (1 << nimParser.OR_OPERATOR) | (1 << nimParser.LESS_THAN) | (1 << nimParser.GREATER_THAN) | (1 << nimParser.NOT_OPERATOR) | (1 << nimParser.XOR_OPERATOR))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
-                self._errHandler.reportMatch(self)
                 self.consume()
         except RecognitionException as re:
             localctx.exception = re
@@ -9132,7 +8952,6 @@ class nimParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
-
 
     class LiteralContext(ParserRuleContext):
 
@@ -9220,7 +9039,6 @@ class nimParser ( Parser ):
             if not(((((_la - 91)) & ~0x3f) == 0 and ((1 << (_la - 91)) & ((1 << (nimParser.NIL - 91)) | (1 << (nimParser.TRIPLESTR_LIT - 91)) | (1 << (nimParser.CHAR_LIT - 91)) | (1 << (nimParser.STR_LIT - 91)) | (1 << (nimParser.RSTR_LIT - 91)) | (1 << (nimParser.INT_LIT - 91)) | (1 << (nimParser.INT8_LIT - 91)) | (1 << (nimParser.INT16_LIT - 91)) | (1 << (nimParser.INT32_LIT - 91)) | (1 << (nimParser.INT64_LIT - 91)) | (1 << (nimParser.UINT_LIT - 91)) | (1 << (nimParser.UINT8_LIT - 91)) | (1 << (nimParser.UINT16_LIT - 91)) | (1 << (nimParser.UINT32_LIT - 91)) | (1 << (nimParser.UINT64_LIT - 91)) | (1 << (nimParser.FLOAT_LIT - 91)) | (1 << (nimParser.FLOAT32_LIT - 91)) | (1 << (nimParser.FLOAT64_LIT - 91)))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
-                self._errHandler.reportMatch(self)
                 self.consume()
         except RecognitionException as re:
             localctx.exception = re
